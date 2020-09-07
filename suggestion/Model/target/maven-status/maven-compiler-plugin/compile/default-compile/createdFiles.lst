@@ -1,0 +1,16 @@
+model\Model.class
+ui\ViewApp.class
+model\DateS.class
+model\Promotion.class
+model\Suggestions.class
+connection\MyConstantsConexiones.class
+connection\CollectorConnection.class
+connection\ConnectorSearcher.class
+connection\PropertiesPrincipal.class
+ui\ViewApp$1.class
+model\IProvider.class
+model\ProductsBo.class
+model\Product.class
+model\ProviderManager.class
+connection\MyClassLoader.class
+connection\IConnector.class

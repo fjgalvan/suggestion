@@ -1,0 +1,44 @@
+package twitter;
+
+
+public class TwitterValidatorDateS {
+	FechaActual f;
+	String ts;
+	public TwitterValidatorDateS(String twitterString){
+		this.f= new FechaActual();
+		this.ts= twitterString;
+	}
+	
+	public boolean VigenciaPromoValida(){
+		boolean vigencia= false;
+		ParsearTweetInSuggestion c= new ParsearTweetInSuggestion(this.ts);
+		c.convertirFecha();
+		c.getDate();
+		
+		if(c.getDate().getAaaa()<this.f.getAnnioActual()){//SI EL AÑO DE LA PROMO ES MENOR AL AÑO ACTUAL
+			vigencia= false;
+		}
+		
+		if(c.getDate().getAaaa().equals(this.f.getAnnioActual())){//SI EL AÑO DE LA PROMO ES IGUAL AÑO ACTUAL
+			if(c.getDate().getMm().equals(this.f.getMesActual())){//SI EL MES DE LA PROMO ES IGUAL AL DEL MES ACTUAL
+				if(c.getDate().getDd()>=this.f.getDiaActual()){//SI EL DIA DE LA PROMO ES MAYOY O IGUAL AL DIA ACTUAL
+					vigencia= true;
+				}if(c.getDate().getDd()<this.f.getDiaActual()){//SI EL DIA DE LA PROMO ES MENOR AL DIA ACTUAL
+					vigencia= false;
+				}
+			}
+			if(c.getDate().getMm()>this.f.getMesActual()){//SI EL MES DE LA PROMO ES MAYOR AL DEL MES ACTUAL
+				vigencia= true;
+			}
+			if(c.getDate().getMm()<this.f.getMesActual()){//SI EL MES DE LA PROMO ES MENOR AL DEL MES ACTUAL
+				vigencia= false;
+			}
+		}
+		
+		if(c.getDate().getAaaa()>this.f.getAnnioActual()){
+			vigencia= true;
+		}
+		return vigencia;
+	}
+	
+}
