@@ -15,9 +15,11 @@ public class ExcelProvider implements IProvider{
 	
 	private List<Suggestions> listSuggestionsExcel;
 	private ExcelConnector ec;
+	public String path;
 	
 	
-	public ExcelProvider(){
+	public ExcelProvider(String path){
+		this.path= path;
 		listSuggestionsExcel = new ArrayList<Suggestions>();
 		ec= new ExcelConnector();
 	}
@@ -25,11 +27,7 @@ public class ExcelProvider implements IProvider{
 	@Override
 	public List<Suggestions> getSuggestions() {
 		if(ec.connect()){
-			String nombreArchivo = MyConstantsConexiones.nombreArchivoExcelXlsx;
-			String rutaArchivo =  MyConstantsConexiones.rutaArchivoExcelXlsx+ nombreArchivo;
-			//String hoja = MyConstantsConexiones.hojaExcelXlsx;
-			ExcelValidator ev= new ExcelValidator(rutaArchivo);
-			
+			ExcelValidator ev= new ExcelValidator(this.path);
 			if(ev.validadorExcel()){
 				listSuggestionsExcel= ev.getListSuggestionsExcel();
 			}			
@@ -38,8 +36,8 @@ public class ExcelProvider implements IProvider{
 	}
 	
 	public static void main(String[] args) {
-
-		ExcelProvider ep= new ExcelProvider();
+		String path="C:\\Ficheros-Excel\\Sugerencias.xlsx";
+		ExcelProvider ep= new ExcelProvider(path);
 		Iterator<Suggestions> nombreIterator = ep.getSuggestions().iterator();
 		while (nombreIterator.hasNext()) {
 			Suggestions elemento = nombreIterator.next();
@@ -48,5 +46,4 @@ public class ExcelProvider implements IProvider{
 			", "+elemento.getProducto()+", "+elemento.getPrecio()+", "+elemento.getFechaDeVigencia().getDate()+"\n");
 		}
 	}
-	
 }

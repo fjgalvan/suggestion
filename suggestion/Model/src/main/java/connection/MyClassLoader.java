@@ -87,16 +87,21 @@ public class MyClassLoader {
 	}
 	
 	//////////////////////////
-	public <C> C load(String pathName, String className) {
+	public <GENERIC> List<GENERIC> load(String pathName, List<String> classesToLoad) {
 		   List<File> jars = this.findJars(pathName);
+		   List<GENERIC> classes= new ArrayList<GENERIC>();
 		   if (jars.isEmpty())
 		       return null;
 		   try {
 		       URL[] urls = this.buildUrls(jars);
+		       //carga todas las URL que toman de los jar
 		       URLClassLoader childClassLoader = new URLClassLoader(urls);
-		       return (C) Class.forName(className, true, childClassLoader).newInstance();
+		       for (String className: classesToLoad) {
+		    	   classes.add((GENERIC) Class.forName(className, true, childClassLoader).newInstance());
+		       }
+		       return classes;
 		   } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | MalformedURLException c) {
-		       throw new RuntimeException("Error cargando la clase " + className);
+		       throw new RuntimeException("Error cargando la clase " + classesToLoad);
 		   }
 		}
 

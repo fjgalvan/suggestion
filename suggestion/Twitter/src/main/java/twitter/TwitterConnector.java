@@ -1,10 +1,9 @@
 package twitter;
 
-import twitter4j.Twitter;
+import twitter4j.Twitter; 
 import twitter4j.TwitterFactory;
 import twitter4j.conf.ConfigurationBuilder;
 import connection.IConnector;
-import connection.PropertiesPrincipal;
 
 public class TwitterConnector implements IConnector {
 	Twitter twitter;
@@ -17,18 +16,12 @@ public class TwitterConnector implements IConnector {
 	public boolean connect() {
 
 		ConfigurationBuilder cb = new ConfigurationBuilder();
-		PropertiesPrincipal pp = new PropertiesPrincipal(
-				MyConstantsTwitter.ROUTE_PROPERTIES);
 
 		cb.setDebugEnabled(true)
-				.setOAuthConsumerKey(
-						pp.leerValorDeUnaClave(MyConstantsTwitter.ConsumerKey))
-				.setOAuthConsumerSecret(
-						pp.leerValorDeUnaClave(MyConstantsTwitter.ConsumerSecret))
-				.setOAuthAccessToken(
-						pp.leerValorDeUnaClave(MyConstantsTwitter.AccessToken))
-				.setOAuthAccessTokenSecret(
-						pp.leerValorDeUnaClave(MyConstantsTwitter.AccessTokenSecret));
+				.setOAuthConsumerKey(MyConstantsTwitter.ConsumerKey)
+				.setOAuthConsumerSecret(MyConstantsTwitter.ConsumerSecret)
+				.setOAuthAccessToken(MyConstantsTwitter.AccessToken)
+				.setOAuthAccessTokenSecret(MyConstantsTwitter.AccessTokenSecret);
 
 		twitter = new TwitterFactory(cb.build()).getInstance();
 

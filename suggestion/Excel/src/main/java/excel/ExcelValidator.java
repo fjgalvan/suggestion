@@ -72,7 +72,7 @@ public class ExcelValidator {
 					if (contFilas > 1) {
 
 						try {
-							System.out.print(cell.getStringCellValue() + " | ");
+							//System.out.print(cell.getStringCellValue() + " | ");
 							contCellValidosParaSerUnaSugerencia(contColumna,
 									cell.getStringCellValue());
 						} catch (Exception e) {
@@ -82,11 +82,11 @@ public class ExcelValidator {
 										"dd/MM/yyyy");
 								this.fechaV = formateador.format(cell
 										.getDateCellValue());
-								System.out.print(this.fechaV);
+								//System.out.print(this.fechaV);
 								contCellValidosParaSerUnaSugerencia(
 										contColumna, this.fechaV);
 							} else {
-								System.out.println(cell.getNumericCellValue());
+								//System.out.println(cell.getNumericCellValue());
 								contCellValidosParaSerUnaSugerencia(
 										contColumna, Double.toString(cell
 												.getNumericCellValue()));
@@ -98,7 +98,7 @@ public class ExcelValidator {
 					contValidadorFechas = contValidadorFechas + 1;
 
 				}
-				System.out.println();
+				//System.out.println();
 				contValidadorFechas = 0;
 				contColumna = 0;
 				if (contCellCollValido == 5) {
@@ -200,11 +200,11 @@ public class ExcelValidator {
 		}
 		if (contColumna == 3) {
 			if (isNumeric(cell)) {
-				System.out.println("Is Numeric");
+				//System.out.println("Is Numeric");
 				this.precio = Double.parseDouble(cell);
 				this.contCellCollValido = this.contCellCollValido + 1;
 			} else {
-				System.out.println("No is Numeric");
+				//System.out.println("No is Numeric");
 			}
 		}
 		if (contColumna == 4) {

@@ -1,8 +1,0 @@
-twitter\FechaActual.class
-twitter\ParsearTweetInSuggestion.class
-twitter\TwitterProvider.class
-twitter\TwitterValidatorTweet.class
-twitter\TwitterValidatorDateS.class
-twitter\MyConstantsTwitter.class
-twitter\TwitterConnector.class
-twitter\TwitterData.class

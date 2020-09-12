@@ -9,30 +9,30 @@ import model.IProvider;
 
 public class CollectorConnection {
 	private List<IProvider> listConnector;
-	ConnectorSearcher search;
+
 
 	public CollectorConnection() {
-		search = new ConnectorSearcher();
+
 		listConnector = new ArrayList<IProvider>();
 	}
 	
-	public List<IProvider> loadConnectors(){
+	public List<IProvider> loadConnectors(List<String> classesToLoad){
 		MyClassLoader mecanismos = new MyClassLoader();
 		//Se castea automáticamente a IConector en la asignación!!
-		listConnector.add(mecanismos.load("C:\\MecanismosDeConexionExterna","twitter.TwitterProvider"));//(search.getPath()); 
+		listConnector =mecanismos.load(ConnectorSearcher.rutaFile, classesToLoad);
 		return listConnector;
 	}
 
-	public void connectAll() 
-			throws IllegalAccessException,
-			IllegalArgumentException, InvocationTargetException,
-			NoSuchMethodException, SecurityException {
-		Iterator<IProvider> it = listConnector.iterator();
-		while (it.hasNext()) {
-			IProvider instance = it.next();
-			instance.getSuggestions();
-		}
-	}
+//	public void connectAll() 
+//			throws IllegalAccessException,
+//			IllegalArgumentException, InvocationTargetException,
+//			NoSuchMethodException, SecurityException {
+//		Iterator<IProvider> it = listConnector.iterator();
+//		while (it.hasNext()) {
+//			IProvider instance = it.next();
+//			instance.getSuggestions();
+//		}
+//	}
 	
 	public List<IProvider> getConnectors() {
 		return listConnector;
@@ -40,9 +40,17 @@ public class CollectorConnection {
 	public static void main( String[] args ) throws ClassNotFoundException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException, IllegalAccessException
     {
         System.out.println( "Hello World!" );
-        CollectorConnection connector= new CollectorConnection();
-        connector.loadConnectors();
+        List<String> classesToLoad= new ArrayList<String>();
+        classesToLoad.add("twitter.TwitterProvider");
+        classesToLoad.add("excel.ExcelProvider");
         
-        System.out.println(connector.getConnectors().get(0).getClass().getName().toString());
+        CollectorConnection connector= new CollectorConnection();
+        connector.loadConnectors(classesToLoad);
+        
+        System.out.println(connector.getConnectors().get(1).getClass().getName().toString());
+        //connector.connectAll();
+        
+        
+        
     }
 }

@@ -1,31 +1,31 @@
 package twitter;
 
-import java.util.ArrayList;
+import java.util.ArrayList; 
 import java.util.Iterator;
 import java.util.List;
 
 import model.IProvider;
 import model.Suggestions;
 import twitter4j.Paging;
-import twitter4j.Query;
-import twitter4j.QueryResult;
 import twitter4j.ResponseList;
 import twitter4j.Status;
-import twitter4j.Twitter;
 import twitter4j.TwitterException;
-import twitter4j.User;
 
 public class TwitterProvider implements IProvider {
+	String userTwitter;
+	Integer lastTweets;
 	private ArrayList<Suggestions> listSuggestionsTwitter;
 	private TwitterConnector tc;
-	public Twitter twitter;
+	//public Twitter twitter;
 	private List<String> listaTweets;
 
-//	public TwitterProvider() {
-//		listSuggestionsTwitter = new ArrayList<Suggestions>();
-//		listaTweets = new ArrayList<String>();
-//		tc = new TwitterConnector();
-//	}
+	public TwitterProvider(String userTwitter, Integer lastTweets) {
+		this.userTwitter= userTwitter;
+		this.lastTweets= lastTweets;
+		listSuggestionsTwitter = new ArrayList<Suggestions>();
+		listaTweets = new ArrayList<String>();
+		tc = new TwitterConnector();
+	}
 
 	@Override
 	public List<Suggestions> getSuggestions() {
@@ -64,14 +64,13 @@ public class TwitterProvider implements IProvider {
 		// El paging sirve para decir el número máx de tweets que quieres
 		// recuperar
 		Paging pagina = new Paging();
-		pagina.setCount(50);
+		pagina.setCount(this.lastTweets);
 
-		// Recupera como máx 50 tweets escritos por el usuario "javier g." 
-		ResponseList<Status> listado = tc.twitter.getUserTimeline("javier g.",pagina);
+		// Recupera como máx this.lastTweets escritos por el usuario this.lastTweets 
+		ResponseList<Status> listado = tc.twitter.getUserTimeline(this.userTwitter,pagina);
 
 		for (int i = 0; i < listado.size(); i++) {
 			listado.get(i).getText();
-			System.out.println(listado.get(i).getText());
 		}
 		return listado;
 	}
@@ -92,11 +91,11 @@ public class TwitterProvider implements IProvider {
 		return listSuggestionsTwitter;
 	}
 
-	
 
 	public static void main(String[] args) {
-
-		TwitterProvider tp= new TwitterProvider();
+		String userTwitter="javier g.";
+		Integer lastTweets=2;
+		TwitterProvider tp= new TwitterProvider(userTwitter, lastTweets);
 		Iterator<Suggestions> nombreIterator = tp.getSuggestions().iterator();
 		while (nombreIterator.hasNext()) {
 			Suggestions elemento = nombreIterator.next();
