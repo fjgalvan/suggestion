@@ -3,25 +3,25 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
+import connection.ConnectorSearcher;
+import connection.MyClassLoader;
+
 
 public class ProviderManager {
-	public ArrayList<IProvider> listaDeConectores;
-	//public IPersistence persistence;
 	public ArrayList<Suggestions> listSuggestionsExtern;
 	
 	public ProviderManager(){
-		listaDeConectores = new ArrayList<IProvider>();
 		listSuggestionsExtern= new ArrayList<Suggestions>();
 	}
 	
-	public void inicializar(){
-		//cargar dinámicamente las promos
+	public IProvider loadProvider(String classesToLoad){
+		List<String> l= new ArrayList<>();
+		l.add(classesToLoad);
+		MyClassLoader mecanismos = new MyClassLoader();
+		//Se castea automáticamente a IConector en la asignación!!
+		return (IProvider) mecanismos.load(ConnectorSearcher.rutaFile, l);
 	}
 
-	
-	public List<IProvider> getProviders(){
-		return listaDeConectores;
-	}
 	
 
 	

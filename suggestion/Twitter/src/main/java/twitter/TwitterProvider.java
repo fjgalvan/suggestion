@@ -1,8 +1,9 @@
 package twitter;
 
-import java.util.ArrayList; 
-import java.util.Iterator;
+import java.util.ArrayList;  
 import java.util.List;
+
+import javax.swing.JOptionPane;
 
 import model.IProvider;
 import model.Suggestions;
@@ -16,7 +17,6 @@ public class TwitterProvider implements IProvider {
 	Integer lastTweets;
 	private ArrayList<Suggestions> listSuggestionsTwitter;
 	private TwitterConnector tc;
-	//public Twitter twitter;
 	private List<String> listaTweets;
 
 	public TwitterProvider(String userTwitter, Integer lastTweets) {
@@ -52,6 +52,7 @@ public class TwitterProvider implements IProvider {
 			rl = recuperarListadoDeUltimosTweetsEscritos();
 		} catch (TwitterException e) {
 			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Elija un usuario twitter válido");
 		}
 		for (int i = 0; i < rl.size(); i++) {
 			listaTweets.add(rl.get(i).getText());
@@ -61,12 +62,8 @@ public class TwitterProvider implements IProvider {
 
 	private ResponseList<Status> recuperarListadoDeUltimosTweetsEscritos() 
 			throws TwitterException {
-		// El paging sirve para decir el número máx de tweets que quieres
-		// recuperar
 		Paging pagina = new Paging();
 		pagina.setCount(this.lastTweets);
-
-		// Recupera como máx this.lastTweets escritos por el usuario this.lastTweets 
 		ResponseList<Status> listado = tc.twitter.getUserTimeline(this.userTwitter,pagina);
 
 		for (int i = 0; i < listado.size(); i++) {
@@ -89,20 +86,6 @@ public class TwitterProvider implements IProvider {
 
 		}
 		return listSuggestionsTwitter;
-	}
-
-
-	public static void main(String[] args) {
-		String userTwitter="javier g.";
-		Integer lastTweets=2;
-		TwitterProvider tp= new TwitterProvider(userTwitter, lastTweets);
-		Iterator<Suggestions> nombreIterator = tp.getSuggestions().iterator();
-		while (nombreIterator.hasNext()) {
-			Suggestions elemento = nombreIterator.next();
-			System.out.println("elemento: ");
-			System.out.println(elemento.getLocal()+", "+elemento.getUbicacion()+
-			", "+elemento.getProducto()+", "+elemento.getPrecio()+", "+elemento.getFechaDeVigencia().getDate()+"\n");
-		}
 	}
 
 }

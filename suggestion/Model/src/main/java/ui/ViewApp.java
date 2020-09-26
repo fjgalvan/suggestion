@@ -4,15 +4,20 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JComponent;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JComboBox;
+import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
+
 import model.Model;
+
 import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.util.List;
+import javax.swing.JFileChooser;
 
 public class ViewApp extends JFrame {
 
@@ -22,10 +27,9 @@ public class ViewApp extends JFrame {
 	private JComboBox<String> comboBoxProveedor;
 	public JButton btnConfigurar;
 	JButton btnBuscar;
-	public JButton btnGuardar;
-	public JPanelGeneral pGeneral;
-
-
+	private JTextArea textArea_Sugerencias;
+	
+	
 	/**
 	 * Create the frame.
 	 * @param m 
@@ -38,9 +42,16 @@ public class ViewApp extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-		JTextArea textArea_Sugerencias = new JTextArea();
+		textArea_Sugerencias = new JTextArea();
 		textArea_Sugerencias.setBounds(125, 240, 477, 112);
-		contentPane.add(textArea_Sugerencias);
+		textArea_Sugerencias.setEditable(false);
+		textArea_Sugerencias.setVisible(true);
+		//contentPane.add(textArea_Sugerencias);
+		
+		JScrollPane scroll = new JScrollPane (textArea_Sugerencias, 
+			      JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+		scroll.setBounds(125, 240, 477, 112);
+		contentPane.add(scroll);
 
 		panel = new JPanel();
 		panel.setBackground(Color.WHITE);
@@ -68,10 +79,12 @@ public class ViewApp extends JFrame {
 		lblSugerencias.setHorizontalAlignment(SwingConstants.LEFT);
 		lblSugerencias.setBounds(10, 245, 89, 14);
 		contentPane.add(lblSugerencias);
-
+		
 		comboBoxProveedor = new JComboBox<String>();
 		comboBoxProveedor.setBounds(125, 13, 259, 31);
+		comboBoxProveedor.addItem("Elegir Proveedor!");
 		contentPane.add(comboBoxProveedor);
+		
 		
 		//ControllerApp c = new ControllerApp(m, this);
 	}
@@ -109,11 +122,10 @@ public class ViewApp extends JFrame {
 	public JButton getBtnConfigurar() {
 		return btnConfigurar;
 	}
-	public JButton getBtnGuardar() {
-		return pGeneral.getBtnGuardar();
+	public JButton getBtnBuscar() {
+		return btnBuscar;
 	}
-	public JButton getBtnCancelar() {
-		return pGeneral.getBtnCancelar();
+	public JTextArea getTextArea_Sugerencias() {
+		return textArea_Sugerencias;
 	}
-	
 }
