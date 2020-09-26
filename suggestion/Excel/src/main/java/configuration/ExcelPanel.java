@@ -35,7 +35,7 @@ public class ExcelPanel extends Observable implements IPanel{
 		btnGuardar.addActionListener(i->{
 			this.setChanged();
 			this.notifyObservers(this);
-		});//Paso el panel
+		});
 		
 		textArea_rutaExcel = new JTextArea();
 		textArea_rutaExcel.setBounds(91, 10, 340, 21);
@@ -45,6 +45,9 @@ public class ExcelPanel extends Observable implements IPanel{
 		btnCancelar = new JButton("CANCELAR");
 		btnCancelar.setBounds(343, 75, 100, 23);
 		panel.add(btnCancelar);
+		btnCancelar.addActionListener(i->{
+			textArea_rutaExcel.setText("");
+		});
 		
 		btnAbrir = new JButton("ABRIR");
 		btnAbrir.setBounds(343, 35, 100, 23);

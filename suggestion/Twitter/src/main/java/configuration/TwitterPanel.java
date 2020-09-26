@@ -38,7 +38,7 @@ public class TwitterPanel extends Observable implements IPanel {
 		btnGuardar.addActionListener(i->{
 			this.setChanged();
 			this.notifyObservers(this);
-		});//Paso el panel
+		});
 		
 		textArea_usuarioTwitter = new JTextArea();
 		textArea_usuarioTwitter.setBounds(145, 10, 287, 21);
@@ -51,6 +51,10 @@ public class TwitterPanel extends Observable implements IPanel {
 		btnCancelar = new JButton("CANCELAR");
 		btnCancelar.setBounds(343, 75, 100, 23);
 		panel.add(btnCancelar);
+		btnCancelar.addActionListener(i->{
+			textArea_usuarioTwitter.setText("");
+			textArea_ultimosTweets.setText("");
+		});
 		
 		return panel;
 	}
