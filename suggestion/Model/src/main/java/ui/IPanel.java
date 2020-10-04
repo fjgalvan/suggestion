@@ -1,7 +1,10 @@
 package ui;
 
+import javax.swing.JButton;
 import javax.swing.JPanel;
 
 public interface IPanel{
-	JPanel createPanel(); //JComponent
+	JPanel createPanel(); 
+	JButton getBtnGuardar();
+	JButton getBtnCancelar();
 }

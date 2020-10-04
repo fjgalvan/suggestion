@@ -1,6 +1,6 @@
 package ui;
  
-import javax.swing.JFrame;
+import javax.swing.JFrame; 
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JComponent;
@@ -9,15 +9,10 @@ import javax.swing.JTextArea;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JComboBox;
-import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
-
-import model.Model;
-
 import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.util.List;
-import javax.swing.JFileChooser;
 
 public class ViewApp extends JFrame {
 
@@ -29,12 +24,7 @@ public class ViewApp extends JFrame {
 	JButton btnBuscar;
 	private JTextArea textArea_Sugerencias;
 	
-	
-	/**
-	 * Create the frame.
-	 * @param m 
-	 */
-	public ViewApp(Model m) {
+	public ViewApp() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 640, 429);
 		contentPane = new JPanel();

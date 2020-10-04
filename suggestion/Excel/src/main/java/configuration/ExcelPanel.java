@@ -1,16 +1,17 @@
 package configuration;
 
-import java.awt.Color;  
+import java.awt.Color;   
 import java.io.File;
 import java.util.Observable;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
-
 import ui.IPanel;
 
 public class ExcelPanel extends Observable implements IPanel{
@@ -67,11 +68,19 @@ public class ExcelPanel extends Observable implements IPanel{
 	}
 	
 	public String getPath(){
-		return textArea_rutaExcel.getText().toString();
+		if(excel.Comunes.isAbsolutePath(textArea_rutaExcel.getText().toString())){
+			return textArea_rutaExcel.getText().toString();
+		}
+		else{
+			JOptionPane.showMessageDialog(null, "Elija una ruta válida!");
+			return "";
+		}
 	}
+	@Override
 	public JButton getBtnGuardar() {
 		return btnGuardar;
 	}
+	@Override
 	public JButton getBtnCancelar() {
 		return btnCancelar;
 	}

@@ -23,11 +23,10 @@ public class ControllerApp implements ActionListener, Observer {
 	private IFactory factoryChose;
 	private IConfiguration config;
 	
-	public ControllerApp(Model m, ViewApp v, List<IFactory> factory) {
+	public ControllerApp(Model m, ViewApp v) {
 		// Asignamos un modelo a nuestro controlador.
 		this.m = m;
 		this.v = v;
-		this.factory= factory;
 		
 		this.v.getBtnConfigurar().addActionListener(i->setPanel());
 		this.v.getComboBoxProveedor().addActionListener(i->setFactoryChoose());
@@ -35,6 +34,9 @@ public class ControllerApp implements ActionListener, Observer {
 	}
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
+	}
+	public void init( List<IFactory> factory){
+		this.factory= factory;
 	}
 	public void setFactoryChoose(){
 		String provider= v.getComboBoxProveedor().getSelectedItem().toString();

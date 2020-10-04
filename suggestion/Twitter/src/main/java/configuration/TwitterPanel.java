@@ -78,9 +78,11 @@ public class TwitterPanel extends Observable implements IPanel {
 			return 0;
 		}
 	}
+	@Override
 	public JButton getBtnGuardar() {
 		return btnGuardar;
 	}
+	@Override
 	public JButton getBtnCancelar() {
 		return btnCancelar;
 	}
