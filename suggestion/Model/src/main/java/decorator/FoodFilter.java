@@ -40,16 +40,6 @@ public class FoodFilter extends SuggestionDecorator{
 		map.put("pastas", "canelones,fideos,ravioles");
 	}
 	public boolean isValue(String claveElegido, String valor){
-		Iterator<String> it = map.keySet().iterator();
-		boolean res= false;
-		while(it.hasNext()){
-			String key = it.next();
-			System.out.println("Clave: " + key + " -> Valor: " + map.get(key));
-			if((map.get(key).contains(valor)) && (key.equals(claveElegido))){
-				res= true;
-				break;
-			}
-		}
-		return res;
+		return (map.get(claveElegido).contains(valor));
 	}
 }
