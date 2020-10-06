@@ -1,11 +1,8 @@
 package decorator;
 
-import java.util.HashMap;
-import java.util.Iterator;
+import java.util.HashMap; 
 import java.util.List;
 import java.util.Map;
-
-import model.IProvider;
 import model.Suggestions;
 
 public class FoodFilter extends SuggestionDecorator{
