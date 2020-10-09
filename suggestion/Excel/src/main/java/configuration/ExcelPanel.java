@@ -12,9 +12,11 @@ import javax.swing.JTextArea;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
+
+import ui.IBoundsPanelConfiguration;
 import ui.IPanel;
 
-public class ExcelPanel extends Observable implements IPanel{
+public class ExcelPanel extends Observable implements IPanel,IBoundsPanelConfiguration{
 	JTextArea textArea_rutaExcel;
 	JButton btnGuardar;
 	JButton btnCancelar;
@@ -23,7 +25,7 @@ public class ExcelPanel extends Observable implements IPanel{
 	public JPanel createPanel() {//JComponent
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.GREEN);
-		panel.setBounds(10, 11, 443, 117);
+		panel.setBounds(xPanel,yPanel,widthPanel,heightPanel);//(10, 11, 443, 117);
 		panel.setLayout(null);
 		
 		JLabel lblRutaExcel = new JLabel("RUTA EXCEL:");
@@ -31,7 +33,7 @@ public class ExcelPanel extends Observable implements IPanel{
 		panel.add(lblRutaExcel);
 		
 		btnGuardar = new JButton("GUARDAR");
-		btnGuardar.setBounds(145, 75, 100, 23);
+		btnGuardar.setBounds(xGuardar, yGuardar, widthGuardar, heightGuardar);
 		panel.add(btnGuardar);
 		btnGuardar.addActionListener(i->{
 			this.setChanged();
@@ -44,7 +46,7 @@ public class ExcelPanel extends Observable implements IPanel{
 		textArea_rutaExcel.setEditable(false);
 		
 		btnCancelar = new JButton("CANCELAR");
-		btnCancelar.setBounds(343, 75, 100, 23);
+		btnCancelar.setBounds(xCancelar, yCancelar, widthCancelar, heightCancelar);
 		panel.add(btnCancelar);
 		btnCancelar.addActionListener(i->{
 			textArea_rutaExcel.setText("");

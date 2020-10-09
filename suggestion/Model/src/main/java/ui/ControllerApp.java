@@ -10,6 +10,8 @@ import java.util.Observer;
 
 import javax.swing.JOptionPane;
 
+import decorator.FoodFilter;
+import decorator.IFilter;
 import model.IFactory;
 import model.IProvider;
 import model.Model;
@@ -22,6 +24,7 @@ public class ControllerApp implements ActionListener, Observer {
 	private List<IFactory> factory;
 	private IFactory factoryChose;
 	private IConfiguration config;
+	private IFilter filter;
 	
 	public ControllerApp(Model m, ViewApp v) {
 		// Asignamos un modelo a nuestro controlador.
@@ -61,6 +64,18 @@ public class ControllerApp implements ActionListener, Observer {
 			", "+elemento.getProducto()+", "+elemento.getPrecio()+", "+elemento.getFechaDeVigencia().getDate()+"\n");
 		}
 	}
+//	public List<Suggestions> setFood(){
+//		if(this.v.getComboBox_comida().equals("elija un tipo de comida!")){
+//			JOptionPane.showMessageDialog(null, "Elija un tipo de comida válido!");
+//		}
+//		else{
+//			this.filter= new Filter(this.m.getProvider(),this.v.getComboBox_comida());
+//		}
+//	}
+//	public void getPrice(){
+//		
+//	}
+	
 	@Override
 	public void update(Observable o, Object arg) {
 		IProvider providerWithNewConfig= config.configureProvider((IPanel) arg);

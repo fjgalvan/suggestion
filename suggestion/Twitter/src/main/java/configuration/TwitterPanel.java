@@ -10,9 +10,10 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
 import twitter.Comunes;
+import ui.IBoundsPanelConfiguration;
 import ui.IPanel;
 
-public class TwitterPanel extends Observable implements IPanel {
+public class TwitterPanel extends Observable implements IPanel,IBoundsPanelConfiguration {
 	JTextArea textArea_usuarioTwitter;
 	JTextArea textArea_ultimosTweets;
 	JButton btnGuardar;
@@ -21,7 +22,7 @@ public class TwitterPanel extends Observable implements IPanel {
 	public JPanel createPanel() {//JComponent
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.CYAN);
-		panel.setBounds(10, 11, 443, 117);
+		panel.setBounds(xPanel,yPanel,widthPanel,heightPanel);//(10, 11, 443, 117);
 		panel.setLayout(null);
 		
 		JLabel lblUsuarioTwitter = new JLabel("USUARIO TWITTER : ");
@@ -33,7 +34,7 @@ public class TwitterPanel extends Observable implements IPanel {
 		panel.add(lblUltimosTweets);
 		
 		btnGuardar = new JButton("GUARDAR");
-		btnGuardar.setBounds(145, 75, 100, 23);
+		btnGuardar.setBounds(xGuardar,yGuardar,widthGuardar,heightGuardar);//(145, 75, 100, 23);
 		panel.add(btnGuardar);
 		btnGuardar.addActionListener(i->{
 			this.setChanged();
@@ -49,7 +50,7 @@ public class TwitterPanel extends Observable implements IPanel {
 		panel.add(textArea_ultimosTweets);
 		
 		btnCancelar = new JButton("CANCELAR");
-		btnCancelar.setBounds(343, 75, 100, 23);
+		btnCancelar.setBounds(xCancelar,yCancelar,widthCancelar,heightCancelar);//(343, 75, 100, 23);
 		panel.add(btnCancelar);
 		btnCancelar.addActionListener(i->{
 			textArea_usuarioTwitter.setText("");

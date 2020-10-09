@@ -24,5 +24,9 @@ public class Model {
 	public void setProvider(IProvider p){
 		this.provider= p;
 	}
+
+	public IProvider getProvider() {
+		return provider;
+	}
 	
 }
