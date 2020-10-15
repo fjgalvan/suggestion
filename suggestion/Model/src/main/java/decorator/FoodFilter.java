@@ -3,6 +3,7 @@ package decorator;
 import java.util.HashMap; 
 import java.util.List;
 import java.util.Map;
+
 import model.Suggestions;
 
 public class FoodFilter extends SuggestionDecorator{
@@ -22,8 +23,10 @@ public class FoodFilter extends SuggestionDecorator{
 	}
 	
 	private List<Suggestions> addFoodFilter(String chosenFood, List<Suggestions> lista){
-		for(Suggestions item : lista) {
+		List<Suggestions> listaAux=lista;
+		for(Suggestions item : listaAux) {
 			if(!isValue(chosenFood, item.getProducto())){
+				System.out.println("item borrado: "+item.getProducto());
 				lista.remove(item);
 			}
 		}

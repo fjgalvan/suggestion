@@ -18,14 +18,12 @@ public class MyClassLoader {
 	public static final String metodoConectarseDeLaInterfaz ="conectarse";
 	public static final String metodogetPromoDeLaInterfaz ="getPromo";
 	File dir;
-//	public MyClassLoader(File dir) throws ClassNotFoundException, IllegalArgumentException, InvocationTargetException {
-//		this.dir= dir; 
-//	}
 	
+	@SuppressWarnings("unchecked")
 	public <GENERIC> List<GENERIC> load(File dir)
 			throws ClassNotFoundException, IllegalArgumentException,
 			InvocationTargetException, NoSuchMethodException, SecurityException, IllegalAccessException {
-			ArrayList listaDeMecanismos = new ArrayList<GENERIC>();
+			ArrayList<GENERIC> listaDeMecanismos = new ArrayList<GENERIC>();//se agregó GENERIC
 		try {
 			File[] files = dir.listFiles();
 			for (File file : files) {
@@ -87,6 +85,7 @@ public class MyClassLoader {
 	}
 	
 	//////////////////////////
+	@SuppressWarnings("unchecked")
 	public <GENERIC> List<GENERIC> load(String pathName, List<String> classesToLoad) {
 		   List<File> jars = this.findJars(pathName);
 		   List<GENERIC> classes= new ArrayList<GENERIC>();
