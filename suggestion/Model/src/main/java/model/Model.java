@@ -36,6 +36,7 @@ public class Model {
 	}
 	
 	public List<Suggestions> getFilteredSuggestions(String chooseFood,String choosePrice){
+		//this.list.clear();
 		IFilter bf= new BasicFilter();
 		this.list=bf.getSuggestions(this.list);
 		

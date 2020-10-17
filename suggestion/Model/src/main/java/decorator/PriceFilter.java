@@ -1,5 +1,6 @@
 package decorator;
 
+import java.util.ArrayList;
 import java.util.HashMap; 
 import java.util.List;
 import java.util.Map;
@@ -16,6 +17,7 @@ public class PriceFilter extends SuggestionDecorator {
 		map = new HashMap<String, Double>();
 		init();
 		this.chosenPrice= chosenPrice;
+		System.out.println("\nPriceFilter");
 	}
 
 	@Override
@@ -24,14 +26,17 @@ public class PriceFilter extends SuggestionDecorator {
 	}
 	
 	private List<Suggestions> addPriceFilter(String chosenFood, List<Suggestions> lista){
-		List<Suggestions> listaAux=lista;
-		for(Suggestions item : listaAux) {
+		List<Suggestions> listaAux=new ArrayList<Suggestions>();;
+		for(Suggestions item : lista) {
 			if(!isValue(chosenFood, item.getPrecio())){
-				System.out.println("item borrado: "+item.getPrecio());
-				lista.remove(item);
+				//System.out.println("item borrado: "+item.getPrecio());
+				//lista.remove(item);
+			}else{
+				//System.out.println("item OK: "+item.getProducto());
+				listaAux.add(item);
 			}
 		}
-		return lista;
+		return listaAux;
 		
 	}
 	public void init(){

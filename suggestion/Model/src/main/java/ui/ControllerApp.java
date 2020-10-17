@@ -54,11 +54,12 @@ public class ControllerApp implements ActionListener, Observer {
 		System.out.println("chooseFood: "+chooseFood);
 		String choosePrice= v.getComboBox_precio().getSelectedItem().toString();
 		System.out.println("choosePrice: "+choosePrice);
-		this.v.getTextArea_Sugerencias().setText("");;
-		Iterator<Suggestions> nombreIterator = this.m.getSuggestion().iterator();
-		//ERROR !
-		//this.m.getSuggestion();
-		//Iterator<Suggestions> nombreIterator = this.m.getFilteredSuggestions(chooseFood, choosePrice).iterator();
+		this.v.getTextArea_Sugerencias().setText("");
+		
+		this.m.getSuggestion();
+		Iterator<Suggestions> nombreIterator = this.m.getFilteredSuggestions(chooseFood, choosePrice).iterator();
+		System.out.println(nombreIterator);
+		
 		while (nombreIterator.hasNext()) {
 			Suggestions elemento = nombreIterator.next();
 			this.v.getTextArea_Sugerencias().append(elemento.getLocal()+", "+elemento.getUbicacion()+
