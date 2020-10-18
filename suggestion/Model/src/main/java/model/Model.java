@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList; 
 import java.util.List;
 import decorator.BasicFilter;
 import decorator.FoodFilter;
@@ -8,10 +9,14 @@ import decorator.PriceFilter;
 
 public class Model {
 	private IProvider provider;
+	private String providerName="";
 	ProviderManager pm;
 	public List<Suggestions> list;
+	private List<Suggestions> aux;
 	
 	public Model(){
+		list= new ArrayList<Suggestions>();
+		aux= new ArrayList<Suggestions>();
 		pm = new ProviderManager();
 		
 	}
@@ -23,7 +28,14 @@ public class Model {
 	}
 	
 	public List<Suggestions> getSuggestion(){
-		this.list= this.provider.getSuggestions();
+		if(this.list.isEmpty() || !(providerName.equals(this.provider.getClass().getName()))){
+			this.list.clear();
+			this.list= this.provider.getSuggestions();
+			this.aux= this.list;
+			providerName=this.provider.getClass().getName();
+		}else{
+			this.list= this.aux;
+		}
 		return this.list;
 	}
 	
@@ -36,17 +48,11 @@ public class Model {
 	}
 	
 	public List<Suggestions> getFilteredSuggestions(String chooseFood,String choosePrice){
-		//this.list.clear();
+		
 		IFilter bf= new BasicFilter();
-		this.list=bf.getSuggestions(this.list);
-		
 		IFilter sf= new FoodFilter(bf,chooseFood);
-		this.list= sf.getSuggestions(this.list);
-		System.out.println("FoodFilter: "+ this.list.size());
-		
 		IFilter sp= new PriceFilter(sf,choosePrice);
-		this.list= sp.getSuggestions(this.list);
-		System.out.println("PriceFilter: "+ this.list.size());
+		this.list= sp.getSuggestions(sf.getSuggestions(bf.getSuggestions(this.list)));
 		
 		return this.list;
 	}

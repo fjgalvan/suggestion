@@ -15,22 +15,22 @@ public class TwitterValidatorDateS {
 		c.convertirFecha();
 		c.getDate();
 		
-		if(c.getDate().getAaaa()<this.f.getAnnioActual()){//SI EL AÑO DE LA PROMO ES MENOR AL AÑO ACTUAL
+		if(c.getDate().getAaaa()<this.f.getAnnioActual()){
 			vigencia= false;
 		}
 		
-		if(c.getDate().getAaaa().equals(this.f.getAnnioActual())){//SI EL AÑO DE LA PROMO ES IGUAL AÑO ACTUAL
-			if(c.getDate().getMm().equals(this.f.getMesActual())){//SI EL MES DE LA PROMO ES IGUAL AL DEL MES ACTUAL
-				if(c.getDate().getDd()>=this.f.getDiaActual()){//SI EL DIA DE LA PROMO ES MAYOY O IGUAL AL DIA ACTUAL
+		if(c.getDate().getAaaa().equals(this.f.getAnnioActual())){
+			if(c.getDate().getMm().equals(this.f.getMesActual())){
+				if(c.getDate().getDd()>=this.f.getDiaActual()){
 					vigencia= true;
-				}if(c.getDate().getDd()<this.f.getDiaActual()){//SI EL DIA DE LA PROMO ES MENOR AL DIA ACTUAL
+				}if(c.getDate().getDd()<this.f.getDiaActual()){
 					vigencia= false;
 				}
 			}
-			if(c.getDate().getMm()>this.f.getMesActual()){//SI EL MES DE LA PROMO ES MAYOR AL DEL MES ACTUAL
+			if(c.getDate().getMm()>this.f.getMesActual()){
 				vigencia= true;
 			}
-			if(c.getDate().getMm()<this.f.getMesActual()){//SI EL MES DE LA PROMO ES MENOR AL DEL MES ACTUAL
+			if(c.getDate().getMm()<this.f.getMesActual()){
 				vigencia= false;
 			}
 		}

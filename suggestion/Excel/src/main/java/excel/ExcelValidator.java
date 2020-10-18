@@ -22,7 +22,6 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 public class ExcelValidator {
 	private Integer aux = 0;
 	private Integer contCellCollValido = 0;
-
 	private String local = "";
 	private String ubicacion = "";
 	private String nombreProducto = "";
@@ -30,18 +29,15 @@ public class ExcelValidator {
 	private String fechaV="";
 	private DateS date;
 	private DateS fechaDeVigencia;
-
 	public List<Suggestions> listSuggestionsExcel;
-
+	private String path;
+	
 	public ExcelValidator(String path) {
 		listSuggestionsExcel = new ArrayList<Suggestions>();
+		this.path= path;
 	}
 
 	public boolean validadorExcel() {
-		String nombreArchivo = MyConstantsConexiones.nombreArchivoExcelXlsx;
-		String rutaArchivo = MyConstantsConexiones.rutaArchivoExcelXlsx
-				+ nombreArchivo;
-		String hoja = MyConstantsConexiones.hojaExcelXlsx;
 		boolean valido = false;
 		Integer contValidadorFechas = 0;
 		Integer contFilas = 0;
@@ -49,7 +45,8 @@ public class ExcelValidator {
 
 		Integer contCeldas = 1;
 
-		try (FileInputStream file = new FileInputStream(new File(rutaArchivo))) {
+		try (FileInputStream file = new FileInputStream(new File(this.path))) {
+			@SuppressWarnings("resource")
 			XSSFWorkbook worbook = new XSSFWorkbook(file);
 			XSSFSheet sheet = worbook.getSheetAt(0);
 			Iterator<Row> rowIterator = sheet.iterator();
@@ -60,7 +57,6 @@ public class ExcelValidator {
 				Iterator<Cell> cellIterator = row.cellIterator();
 				Cell cell;
 				while (cellIterator.hasNext()) {
-					// contValidadorFechas = 0;
 					cell = cellIterator.next();
 					contCeldas = contCeldas + 1;
 					if (contFilas == 1) {
@@ -72,21 +68,17 @@ public class ExcelValidator {
 					if (contFilas > 1) {
 
 						try {
-							//System.out.print(cell.getStringCellValue() + " | ");
 							contCellValidosParaSerUnaSugerencia(contColumna,
 									cell.getStringCellValue());
 						} catch (Exception e) {
 							if (DateUtil.isCellDateFormatted(cell)) {
-								// System.out.println(cell.getDateCellValue().toLocaleString());
 								SimpleDateFormat formateador = new SimpleDateFormat(
 										"dd/MM/yyyy");
 								this.fechaV = formateador.format(cell
 										.getDateCellValue());
-								//System.out.print(this.fechaV);
 								contCellValidosParaSerUnaSugerencia(
 										contColumna, this.fechaV);
 							} else {
-								//System.out.println(cell.getNumericCellValue());
 								contCellValidosParaSerUnaSugerencia(
 										contColumna, Double.toString(cell
 												.getNumericCellValue()));
@@ -98,7 +90,6 @@ public class ExcelValidator {
 					contValidadorFechas = contValidadorFechas + 1;
 
 				}
-				//System.out.println();
 				contValidadorFechas = 0;
 				contColumna = 0;
 				if (contCellCollValido == 5) {
@@ -148,7 +139,6 @@ public class ExcelValidator {
 	}
 
 	public Date parsearStringADate(String fecha) throws ParseException {
-		Date fechaActual = new Date();
 		SimpleDateFormat formateador = new SimpleDateFormat("dd/MM/yyyy");
 		Date d = formateador.parse(fecha);
 		return d;
@@ -200,11 +190,9 @@ public class ExcelValidator {
 		}
 		if (contColumna == 3) {
 			if (isNumeric(cell)) {
-				//System.out.println("Is Numeric");
 				this.precio = Double.parseDouble(cell);
 				this.contCellCollValido = this.contCellCollValido + 1;
 			} else {
-				//System.out.println("No is Numeric");
 			}
 		}
 		if (contColumna == 4) {
@@ -217,8 +205,6 @@ public class ExcelValidator {
 	}
 
 	private Suggestions generarUnaSugerencia() {
-		
-		//this.fechaDeVigencia= parsearFecha(this.fechaV);
 		Suggestions s = new Suggestions(this.local, this.ubicacion,
 				this.nombreProducto, this.precio, this.fechaDeVigencia);
 		return s;
@@ -237,30 +223,5 @@ public class ExcelValidator {
 		return listSuggestionsExcel;
 	}
 
-	public static void main(String[] args) {
-		String nombreArchivo = MyConstantsConexiones.nombreArchivoExcelXlsx;
-		String rutaArchivo = MyConstantsConexiones.rutaArchivoExcelXlsx
-				+ nombreArchivo;
-		String hoja = MyConstantsConexiones.hojaExcelXlsx;
-
-		ExcelValidator e = new ExcelValidator(rutaArchivo);
-		System.out.println("ExcelValidator");
-		e.validadorExcel();
-
-		// System.out.println(e.isFechaVigente("27/02/2020"));
-
-		// System.out.println(e.isNumeric("10"));
-		// System.out.println(e.isNumeric("10.5"));
-		
-		String f= "18/09/2022";
-		String[] parts = f.split("/");
-		String dia= parts[0];
-		String mes= parts[1];
-		String anio= parts[2];
-		
-		System.out.println(dia);
-		System.out.println(mes);
-		System.out.println(anio);
-	}
 
 }

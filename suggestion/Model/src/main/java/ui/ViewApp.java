@@ -38,7 +38,6 @@ public class ViewApp extends JFrame {
 		textArea_Sugerencias.setBounds(125, 240, 477, 112);
 		textArea_Sugerencias.setEditable(false);
 		textArea_Sugerencias.setVisible(true);
-		//contentPane.add(textArea_Sugerencias);
 		
 		JScrollPane scroll = new JScrollPane (textArea_Sugerencias, 
 			      JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);

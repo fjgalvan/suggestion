@@ -7,19 +7,17 @@ import java.io.IOException;
 import connection.IConnector;
 
 public class ExcelConnector implements IConnector{
+	String path;
 	
-	public ExcelConnector(){
-		
+	public ExcelConnector(String path){
+		this.path= path;
 	}
 	
 	@SuppressWarnings({ "unused", "resource" })
 	@Override
 	public boolean connect() {
-		String nombreArchivo = MyConstantsConexiones.nombreArchivoExcelXlsx;
-		String rutaArchivo =  MyConstantsConexiones.rutaArchivoExcelXlsx+ nombreArchivo;
-		//String hoja = MyConstantsConexiones.hojaExcelXlsx;
 		try  {
-			FileInputStream file = new FileInputStream(new File(rutaArchivo));
+			FileInputStream file = new FileInputStream(new File(this.path));
 			System.out.println("Conexión Excel correcto!");
 			return true;
 		}catch (IOException e) {
@@ -33,12 +31,6 @@ public class ExcelConnector implements IConnector{
 	public boolean disconnect() {
 		return false;
 	}
-	
-	public static void main(String[] args) {
-		ExcelConnector ec= new ExcelConnector();
-		
-		System.out.println(ec.connect());
 
-	}
 
 }

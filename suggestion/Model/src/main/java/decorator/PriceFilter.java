@@ -17,22 +17,17 @@ public class PriceFilter extends SuggestionDecorator {
 		map = new HashMap<String, Double>();
 		init();
 		this.chosenPrice= chosenPrice;
-		System.out.println("\nPriceFilter");
 	}
 
 	@Override
 	public List<Suggestions> getSuggestions(List<Suggestions> lista) {
-		return addPriceFilter(chosenPrice, super.getSuggestions(lista));//llamo a lo filtro anterior!!
+		return addPriceFilter(chosenPrice, super.getSuggestions(lista));
 	}
 	
 	private List<Suggestions> addPriceFilter(String chosenFood, List<Suggestions> lista){
 		List<Suggestions> listaAux=new ArrayList<Suggestions>();;
 		for(Suggestions item : lista) {
-			if(!isValue(chosenFood, item.getPrecio())){
-				//System.out.println("item borrado: "+item.getPrecio());
-				//lista.remove(item);
-			}else{
-				//System.out.println("item OK: "+item.getProducto());
+			if(isValue(chosenFood, item.getPrecio())){
 				listaAux.add(item);
 			}
 		}

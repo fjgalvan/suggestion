@@ -16,7 +16,7 @@ public class ExcelProvider implements IProvider{
 	public ExcelProvider(String path){
 		this.path= path;
 		listSuggestionsExcel = new ArrayList<Suggestions>();
-		ec= new ExcelConnector();
+		ec= new ExcelConnector(this.path);
 	}
 	
 	@Override

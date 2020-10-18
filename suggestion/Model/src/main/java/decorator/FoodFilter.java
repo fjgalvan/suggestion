@@ -16,7 +16,6 @@ public class FoodFilter extends SuggestionDecorator{
 		map = new HashMap<String, String>();
 		init();
 		this.chosenFood= chosenFood;
-		System.out.println("\nFoodFilter");
 	}
 	
 	@Override
@@ -25,17 +24,13 @@ public class FoodFilter extends SuggestionDecorator{
 	}
 	
 	private List<Suggestions> addFoodFilter(String chosenFood, List<Suggestions> lista){
-		List<Suggestions> listaAux=new ArrayList<Suggestions>();
+		List<Suggestions> aux= new ArrayList<Suggestions>();
 		for(Suggestions item : lista) {
-			if(!isValue(chosenFood, item.getProducto())){
-				//System.out.println("item borrado: "+item.getProducto());
-				//lista.remove(item);
-			}else{
-				//System.out.println("item OK: "+item.getProducto());
-				listaAux.add(item);
+			if(isValue(chosenFood, item.getProducto())){
+				aux.add(item);
 			}
 		}
-		return listaAux;
+		return aux;
 		
 	}
 	private void init(){

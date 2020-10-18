@@ -8,10 +8,6 @@ import connection.IConnector;
 public class TwitterConnector implements IConnector {
 	Twitter twitter;
 
-//	public TwitterConnector(Twitter twitter) {
-//		this.twitter = twitter;
-//	}
-
 	@Override
 	public boolean connect() {
 
