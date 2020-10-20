@@ -1,8 +1,8 @@
 package configuration;
 
-import configuration.ExcelPanel;
+import provider.IProvider;
+import configuration.ExcelPanel; 
 import excel.ExcelProvider;
-import model.IProvider;
 import ui.IConfiguration;
 import ui.IPanel;
 

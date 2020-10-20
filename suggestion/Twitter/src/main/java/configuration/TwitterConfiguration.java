@@ -1,6 +1,6 @@
 package configuration;
 
-import model.IProvider;
+import provider.IProvider;
 import twitter.TwitterProvider;
 import ui.IConfiguration;
 import ui.IPanel;

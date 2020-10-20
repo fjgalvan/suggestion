@@ -1,7 +1,7 @@
 package decorator;
 
-import java.util.List;
-import model.Suggestions;
+import java.util.List; 
+import provider.Suggestions;
 
 public abstract class SuggestionDecorator implements IFilter{
 	private final IFilter filter;

@@ -1,12 +1,12 @@
 package twitter;
 
-import java.util.ArrayList;   
+import java.util.ArrayList;     
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-import model.DateS;
-import model.Suggestions;
+import provider.Suggestions;
+import util.DateS;
 
 public class ParsearTweetInSuggestion {
 	String twitterString;

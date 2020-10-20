@@ -1,4 +1,4 @@
-package model;
+package provider;
 
 import java.util.List;
 import java.util.Observer;

@@ -1,17 +1,19 @@
 package ui; 
 
-import java.awt.event.ActionEvent;  
+import java.awt.event.ActionEvent;    
 import java.awt.event.ActionListener;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
+
 import javax.swing.JOptionPane;
-import model.IFactory;
-import model.IProvider;
+
+import provider.IFactory;
+import provider.IProvider;
+import provider.Suggestions;
 import model.Model;
-import model.Suggestions;
 
 
 public class ControllerApp implements ActionListener, Observer {

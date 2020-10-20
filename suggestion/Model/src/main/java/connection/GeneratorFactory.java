@@ -1,8 +1,9 @@
 package connection;
  
-import java.util.ArrayList;
+import java.util.ArrayList; 
 import java.util.List;
-import model.IFactory;
+
+import provider.IFactory;
 
 public class GeneratorFactory {
 	private List<IFactory> listFactories;

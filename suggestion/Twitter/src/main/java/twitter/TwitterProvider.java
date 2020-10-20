@@ -1,9 +1,9 @@
 package twitter;
 
-import java.util.ArrayList;   
+import java.util.ArrayList;     
 import java.util.List;
-import model.IProvider;
-import model.Suggestions;
+import provider.IProvider;
+import provider.Suggestions;
 
 public class TwitterProvider implements IProvider {
 	private ArrayList<Suggestions> listSuggestionsTwitter;

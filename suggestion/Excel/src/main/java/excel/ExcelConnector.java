@@ -18,7 +18,6 @@ public class ExcelConnector implements IConnector{
 	public boolean connect() {
 		try  {
 			FileInputStream file = new FileInputStream(new File(this.path));
-			System.out.println("Conexión Excel correcto!");
 			return true;
 		}catch (IOException e) {
 			System.out.println("Se Produjo un Error de Conexion con Excel!!!  "+e.getMessage());

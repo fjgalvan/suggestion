@@ -1,11 +1,10 @@
 package configuration;
 
-import java.util.List;
+import java.util.List; 
 import java.util.Observer;
-
+import provider.IFactory;
 import ui.IConfiguration;
 import ui.IPanel;
-import model.IFactory;
 
 public class ExcelFactory implements IFactory{
 

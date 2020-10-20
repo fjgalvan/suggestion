@@ -1,10 +1,10 @@
 package ui;
 
-import java.util.ArrayList;  
+import java.util.ArrayList;    
 import java.util.List;
 import java.util.stream.Collectors;
+import provider.IFactory;
 import connection.GeneratorFactory;
-import model.IFactory;
 import model.Model;
 
 public class MainApp {

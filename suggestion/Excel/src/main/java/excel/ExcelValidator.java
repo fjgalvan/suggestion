@@ -1,6 +1,6 @@
 package excel;
 
-import java.io.File; 
+import java.io.File;   
 import java.io.FileInputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -9,14 +9,14 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
-import model.DateS;
-import model.Suggestions;
-
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.DateUtil;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+import provider.Suggestions;
+import util.DateS;
 
 
 public class ExcelValidator {

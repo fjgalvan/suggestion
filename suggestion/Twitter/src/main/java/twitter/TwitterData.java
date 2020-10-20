@@ -1,9 +1,9 @@
 package twitter;
 
-import java.util.ArrayList;
+import java.util.ArrayList; 
 import java.util.List;
 import javax.swing.JOptionPane;
-import model.Suggestions;
+import provider.Suggestions;
 import twitter4j.Paging;
 import twitter4j.ResponseList;
 import twitter4j.Status;

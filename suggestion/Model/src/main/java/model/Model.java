@@ -1,7 +1,9 @@
 package model;
 
-import java.util.ArrayList; 
+import java.util.ArrayList;   
 import java.util.List;
+import provider.IProvider;
+import provider.Suggestions;
 import decorator.BasicFilter;
 import decorator.FoodFilter;
 import decorator.IFilter;
@@ -10,21 +12,15 @@ import decorator.PriceFilter;
 public class Model {
 	private IProvider provider;
 	private String providerName="";
-	ProviderManager pm;
 	public List<Suggestions> list;
 	private List<Suggestions> aux;
 	
 	public Model(){
 		list= new ArrayList<Suggestions>();
 		aux= new ArrayList<Suggestions>();
-		pm = new ProviderManager();
-		
 	}
 	
 	public void inicializar() {
-		// Leo todos los Productos que tengo en ProductosBo
-		ProductsBo pBo = new ProductsBo();
-		pBo.getListaDeProductos();
 	}
 	
 	public List<Suggestions> getSuggestion(){

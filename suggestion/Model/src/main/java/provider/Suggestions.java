@@ -1,4 +1,6 @@
-package model;
+package provider;
+
+import util.DateS;
 
 public class Suggestions {
 	private String local;
@@ -16,12 +18,6 @@ public class Suggestions {
 		this.fechaDeVigencia = fechaDeVigencia;
 	}
 
-	public Suggestions(String local2, String ubicacion2, Object key,
-			Object value, DateS fechaDeVigencia2) {
-		// TODO Auto-generated constructor stub
-	}
-
-	// GETs
 	public String getLocal() {
 		return local;
 	}
@@ -37,16 +33,4 @@ public class Suggestions {
 	public Double getPrecio() {
 		return precio;
 	}
-	public boolean isValidProduct(String producto) {
-		Boolean isProduct=false;
-		ProductsBo pBo = new ProductsBo();
-		pBo.getListaDeProductos();
-		for (Product prod : pBo.getListaDeProductos()) {
-			if (prod.getNombre().equals(producto)) {
-				isProduct= true;
-			}
-		}
-		return isProduct;
-	}
-
 }

@@ -1,4 +1,4 @@
-package model;
+package util;
 
 public class DateS {
 	Integer dd;

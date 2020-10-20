@@ -1,11 +1,11 @@
 package decorator;
 
-import java.util.ArrayList;
+import java.util.ArrayList;  
 import java.util.HashMap; 
 import java.util.List;
 import java.util.Map;
-
-import model.Suggestions;
+import provider.ProductsBo;
+import provider.Suggestions;
 
 public class PriceFilter extends SuggestionDecorator {
 	String chosenPrice;
@@ -35,9 +35,8 @@ public class PriceFilter extends SuggestionDecorator {
 		
 	}
 	public void init(){
-		map.put("bajo", 200.0);
-		map.put("medio", 1000.0);
-		map.put("grande", 3000.0);
+		ProductsBo products= new ProductsBo();
+		this.map= products.getPrices();
 	}
 	public boolean isValue(String claveElegido, Double valor){
 		return (valor <= map.get(claveElegido));

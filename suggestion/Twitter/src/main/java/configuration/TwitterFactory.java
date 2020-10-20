@@ -1,11 +1,10 @@
 package configuration;
 
-import java.util.List;
-
-import model.IFactory;
+import java.util.List; 
 import ui.IConfiguration;
 import ui.IPanel;
 import java.util.Observer;
+import provider.IFactory;
 
 public class TwitterFactory implements IFactory{
 

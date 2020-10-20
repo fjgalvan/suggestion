@@ -1,10 +1,10 @@
 package excel;
 
-import java.util.ArrayList;
+import java.util.ArrayList;  
 import java.util.List;
-import model.IProvider;
-import model.Suggestions;
 
+import provider.IProvider;
+import provider.Suggestions;
 
 public class ExcelProvider implements IProvider{
 	
