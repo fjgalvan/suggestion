@@ -1,9 +1,9 @@
 package util;
 
 public class DateS {
-	Integer dd;
-	Integer mm;
-	Integer aaaa;
+	private Integer dd;
+	private Integer mm;
+	private Integer aaaa;
 	
 	public DateS(Integer dd,Integer mm,Integer aaaa){
 		this.dd= dd;
@@ -11,7 +11,6 @@ public class DateS {
 		this.aaaa= aaaa;
 	}
 
-	//GETs & SETs
 	public Integer getDd() {
 		return dd;
 	}

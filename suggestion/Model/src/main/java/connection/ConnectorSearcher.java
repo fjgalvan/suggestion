@@ -3,8 +3,8 @@ package connection;
 import java.io.File;
 
 public class ConnectorSearcher {
-	public static final String rutaFile = "C:\\MecanismosDeConexionExterna";
-	File path = new File(rutaFile);
+	public static final String pathFile = "C:\\MecanismosDeConexionExterna";
+	private File path = new File(pathFile);
 	
 	public ConnectorSearcher(){
 	}

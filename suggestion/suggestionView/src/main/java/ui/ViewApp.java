@@ -17,6 +17,23 @@ import java.util.List;
 public class ViewApp extends JFrame {
 
 	private static final long serialVersionUID = 1L;
+	private static final String config = "CONFIGURAR";
+	private static final String load= "BUSCAR";
+	private static final String provider= "PROVEEDOR";
+	private static final String configuration= "CONFIGURACION: ";
+	private static final String suggestion= "SUGERENCIAS";
+	private static final String chooseProvider= "Elegir Proveedor!";
+	private static final String chooseFood= "elija un tipo de comida!";
+	private static final String scrap= "chatarras";
+	private static final String desserts= "postres";
+	private static final String healthy= "sanas";
+	private static final String pasta= "pastas";
+	private static final String filters= "FILTROS: ";
+	private static final String choosePriceMax="elija un rango de precio máximo!";
+	private static final String low= "bajo";
+	private static final String medium= "medio";
+	private static final String big= "grande";
+	
 	private JPanel contentPane;
 	private JPanel panel;
 	private JComboBox<String> comboBoxProveedor;
@@ -50,55 +67,52 @@ public class ViewApp extends JFrame {
 		contentPane.add(panel);
 		panel.setLayout(null);
 
-		btnConfigurar = new JButton("CONFIGURAR");
+		btnConfigurar = new JButton(config);
 		btnConfigurar.setBounds(413, 12, 109, 31);
 		contentPane.add(btnConfigurar);
 
-		btnBuscar = new JButton("BUSCAR");
+		btnBuscar = new JButton(load);
 		btnBuscar.setBounds(295, 424, 89, 31);
 		contentPane.add(btnBuscar);
 
-		JLabel lblConectores = new JLabel("PROVEEDOR");
+		JLabel lblConectores = new JLabel(provider);
 		lblConectores.setBounds(10, 12, 102, 23);
 		contentPane.add(lblConectores);
 
-		JLabel lblPanel = new JLabel("CONFIGURACION: ");
+		JLabel lblPanel = new JLabel(configuration);
 		lblPanel.setBounds(10, 63, 109, 14);
 		contentPane.add(lblPanel);
 
-		JLabel lblSugerencias = new JLabel("SUGERENCIAS");
+		JLabel lblSugerencias = new JLabel(suggestion);
 		lblSugerencias.setHorizontalAlignment(SwingConstants.LEFT);
 		lblSugerencias.setBounds(10, 307, 105, 14);
 		contentPane.add(lblSugerencias);
 		
 		comboBoxProveedor = new JComboBox<String>();
 		comboBoxProveedor.setBounds(125, 13, 259, 31);
-		comboBoxProveedor.addItem("Elegir Proveedor!");
+		comboBoxProveedor.addItem(chooseProvider);
 		contentPane.add(comboBoxProveedor);
 		
 		comboBox_comida = new JComboBox<String>();
 		comboBox_comida.setBounds(125, 226, 216, 20);
-		comboBox_comida.addItem("elija un tipo de comida!");
-		comboBox_comida.addItem("chatarras");
-		comboBox_comida.addItem("postres");
-		comboBox_comida.addItem("sanas");
-		comboBox_comida.addItem("pastas");
+		comboBox_comida.addItem(chooseFood);
+		comboBox_comida.addItem(scrap);
+		comboBox_comida.addItem(desserts);
+		comboBox_comida.addItem(healthy);
+		comboBox_comida.addItem(pasta);
 		contentPane.add(comboBox_comida);
 		
-		JLabel lblFiltros = new JLabel("FILTROS: ");
+		JLabel lblFiltros = new JLabel(filters);
 		lblFiltros.setBounds(10, 229, 102, 14);
 		contentPane.add(lblFiltros);
 		
 		comboBox_precio = new JComboBox<String>();
 		comboBox_precio.setBounds(386, 226, 216, 20);
-		comboBox_precio.addItem("elija un rango de precio!");
-		comboBox_precio.addItem("bajo");
-		comboBox_precio.addItem("medio");
-		comboBox_precio.addItem("grande");
+		comboBox_precio.addItem(choosePriceMax);
+		comboBox_precio.addItem(low);
+		comboBox_precio.addItem(medium);
+		comboBox_precio.addItem(big);
 		contentPane.add(comboBox_precio);
-		
-		
-		//ControllerApp c = new ControllerApp(m, this);
 	}
 	
 	public void nuevoPanel(JPanel panelActual){

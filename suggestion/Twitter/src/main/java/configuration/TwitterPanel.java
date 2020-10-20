@@ -14,6 +14,12 @@ import ui.IBoundsPanelConfiguration;
 import ui.IPanel;
 
 public class TwitterPanel extends Observable implements IPanel,IBoundsPanelConfiguration {
+	private static final String userNameLabel= "USUARIO TWITTER : ";
+	private static final String lastTweetsLabel= "ULTIMOS TWEETS : ";
+	private static final String saveButtonName= "GUARDAR";
+	private static final String errorChooseUserMsg= "Elija un usuario twitter válido";
+	private static final String errorChooseNumericMsg= "Elija un valor numérico válido, últimos tweets";
+	
 	JTextArea textArea_usuarioTwitter;
 	JTextArea textArea_ultimosTweets;
 	JButton btnGuardar;
@@ -22,19 +28,19 @@ public class TwitterPanel extends Observable implements IPanel,IBoundsPanelConfi
 	public JPanel createPanel() {//JComponent
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.CYAN);
-		panel.setBounds(xPanel,yPanel,widthPanel,heightPanel);//(10, 11, 443, 117);
+		panel.setBounds(xPanel,yPanel,widthPanel,heightPanel);
 		panel.setLayout(null);
 		
-		JLabel lblUsuarioTwitter = new JLabel("USUARIO TWITTER : ");
+		JLabel lblUsuarioTwitter = new JLabel(userNameLabel);
 		lblUsuarioTwitter.setBounds(10, 11, 141, 23);
 		panel.add(lblUsuarioTwitter);
 		
-		JLabel lblUltimosTweets = new JLabel("ULTIMOS TWEETS : ");
+		JLabel lblUltimosTweets = new JLabel(lastTweetsLabel);
 		lblUltimosTweets.setBounds(10, 42, 141, 23);
 		panel.add(lblUltimosTweets);
 		
-		btnGuardar = new JButton("GUARDAR");
-		btnGuardar.setBounds(xGuardar,yGuardar,widthGuardar,heightGuardar);//(145, 75, 100, 23);
+		btnGuardar = new JButton(saveButtonName);
+		btnGuardar.setBounds(xGuardar,yGuardar,widthGuardar,heightGuardar);
 		panel.add(btnGuardar);
 		btnGuardar.addActionListener(i->{
 			this.setChanged();
@@ -66,7 +72,7 @@ public class TwitterPanel extends Observable implements IPanel,IBoundsPanelConfi
 			return textArea_usuarioTwitter.getText().toString();
 		}
 		else{
-			JOptionPane.showMessageDialog(null, "Elija un usuario twitter válido");
+			JOptionPane.showMessageDialog(null, errorChooseUserMsg);
 			return "";
 		}
 	}
@@ -75,7 +81,7 @@ public class TwitterPanel extends Observable implements IPanel,IBoundsPanelConfi
 			return Integer.parseInt((textArea_ultimosTweets.getText().toString()));
 		}
 		else{
-			JOptionPane.showMessageDialog(null, "Elija un valor numérico válido, últimos tweets");
+			JOptionPane.showMessageDialog(null, errorChooseNumericMsg);
 			return 0;
 		}
 	}

@@ -6,6 +6,7 @@ import twitter4j.conf.ConfigurationBuilder;
 import connection.IConnector;
 
 public class TwitterConnector implements IConnector {
+	private static final String errorMsg= "Se Produjo un Error de Conexion con Twitter!!!  ";
 	Twitter twitter;
 
 	@Override
@@ -14,17 +15,17 @@ public class TwitterConnector implements IConnector {
 		ConfigurationBuilder cb = new ConfigurationBuilder();
 
 		cb.setDebugEnabled(true)
-				.setOAuthConsumerKey(MyConstantsTwitter.ConsumerKey)
-				.setOAuthConsumerSecret(MyConstantsTwitter.ConsumerSecret)
-				.setOAuthAccessToken(MyConstantsTwitter.AccessToken)
-				.setOAuthAccessTokenSecret(MyConstantsTwitter.AccessTokenSecret);
+				.setOAuthConsumerKey(MyConstantsConnectionTwitter.ConsumerKey)
+				.setOAuthConsumerSecret(MyConstantsConnectionTwitter.ConsumerSecret)
+				.setOAuthAccessToken(MyConstantsConnectionTwitter.AccessToken)
+				.setOAuthAccessTokenSecret(MyConstantsConnectionTwitter.AccessTokenSecret);
 
 		twitter = new TwitterFactory(cb.build()).getInstance();
 
 		if(twitter != null){
 			return true;
 		}else{ 
-			System.out.println("Se Produjo un Error de Conexion con Twitter!!!  ");
+			System.out.println(errorMsg);
 			return false;
 		}
 	}

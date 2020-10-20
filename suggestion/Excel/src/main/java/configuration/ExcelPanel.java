@@ -17,6 +17,14 @@ import ui.IBoundsPanelConfiguration;
 import ui.IPanel;
 
 public class ExcelPanel extends Observable implements IPanel,IBoundsPanelConfiguration{
+	private static final String pathLabel= "RUTA EXCEL:";
+	private static final String saveButtonName= "GUARDAR";
+	private static final String cancelButtonName= "CANCELAR";
+	private static final String openButtonName= "ABRIR";
+	private static final String helpExtention= "Archivos Excel (.xlsx)";
+	private static final String extentionExcelFile= "xlsx";
+	private static final String errorPathMsg= "Elija una ruta válida!";
+	
 	JTextArea textArea_rutaExcel;
 	JButton btnGuardar;
 	JButton btnCancelar;
@@ -28,11 +36,11 @@ public class ExcelPanel extends Observable implements IPanel,IBoundsPanelConfigu
 		panel.setBounds(xPanel,yPanel,widthPanel,heightPanel);//(10, 11, 443, 117);
 		panel.setLayout(null);
 		
-		JLabel lblRutaExcel = new JLabel("RUTA EXCEL:");
+		JLabel lblRutaExcel = new JLabel(pathLabel);
 		lblRutaExcel.setBounds(10, 11, 75, 23);
 		panel.add(lblRutaExcel);
 		
-		btnGuardar = new JButton("GUARDAR");
+		btnGuardar = new JButton(saveButtonName);
 		btnGuardar.setBounds(xGuardar, yGuardar, widthGuardar, heightGuardar);
 		panel.add(btnGuardar);
 		btnGuardar.addActionListener(i->{
@@ -45,19 +53,19 @@ public class ExcelPanel extends Observable implements IPanel,IBoundsPanelConfigu
 		panel.add(textArea_rutaExcel);
 		textArea_rutaExcel.setEditable(false);
 		
-		btnCancelar = new JButton("CANCELAR");
+		btnCancelar = new JButton(cancelButtonName);
 		btnCancelar.setBounds(xCancelar, yCancelar, widthCancelar, heightCancelar);
 		panel.add(btnCancelar);
 		btnCancelar.addActionListener(i->{
 			textArea_rutaExcel.setText("");
 		});
 		
-		btnAbrir = new JButton("ABRIR");
+		btnAbrir = new JButton(openButtonName);
 		btnAbrir.setBounds(343, 35, 100, 23);
 		panel.add(btnAbrir);
 		btnAbrir.addActionListener(i->{
 			JFileChooser jf = new JFileChooser();
-			FileFilter filtro= new FileNameExtensionFilter("Archivos Excel (.xlsx)","xlsx");
+			FileFilter filtro= new FileNameExtensionFilter(helpExtention,extentionExcelFile);
 			jf.setFileFilter(filtro);
 			jf.showOpenDialog(panel);
 			File archivo = jf.getSelectedFile();
@@ -74,7 +82,7 @@ public class ExcelPanel extends Observable implements IPanel,IBoundsPanelConfigu
 			return textArea_rutaExcel.getText().toString();
 		}
 		else{
-			JOptionPane.showMessageDialog(null, "Elija una ruta válida!");
+			JOptionPane.showMessageDialog(null, errorPathMsg);
 			return "";
 		}
 	}

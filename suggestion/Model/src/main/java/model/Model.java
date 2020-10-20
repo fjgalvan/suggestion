@@ -2,6 +2,9 @@ package model;
 
 import java.util.ArrayList;   
 import java.util.List;
+
+import connection.GeneratorFactory;
+import provider.IFactory;
 import provider.IProvider;
 import provider.Suggestions;
 import decorator.BasicFilter;
@@ -12,27 +15,31 @@ import decorator.PriceFilter;
 public class Model {
 	private IProvider provider;
 	private String providerName="";
-	public List<Suggestions> list;
-	private List<Suggestions> aux;
+	private List<Suggestions> listSuggestions;
+	private List<Suggestions> auxListSuggestions;
+	private GeneratorFactory factory;
 	
 	public Model(){
-		list= new ArrayList<Suggestions>();
-		aux= new ArrayList<Suggestions>();
+		this.listSuggestions= new ArrayList<Suggestions>();
+		this.auxListSuggestions= new ArrayList<Suggestions>();
+		this.factory = new GeneratorFactory();
 	}
 	
-	public void inicializar() {
+	
+	public List<IFactory> initFactories(List<String>  listFactories) {
+		return this.factory.loadFactories(listFactories);
 	}
 	
 	public List<Suggestions> getSuggestion(){
-		if(this.list.isEmpty() || !(providerName.equals(this.provider.getClass().getName()))){
-			this.list.clear();
-			this.list= this.provider.getSuggestions();
-			this.aux= this.list;
-			providerName=this.provider.getClass().getName();
+		if(this.listSuggestions.isEmpty() || !(this.providerName.equals(this.provider.getClass().getName()))){
+			this.listSuggestions.clear();
+			this.listSuggestions= this.provider.getSuggestions();
+			this.auxListSuggestions= this.listSuggestions;
+			this.providerName=this.provider.getClass().getName();
 		}else{
-			this.list= this.aux;
+			this.listSuggestions= this.auxListSuggestions;
 		}
-		return this.list;
+		return this.listSuggestions;
 	}
 	
 	public void setProvider(IProvider p){
@@ -44,12 +51,10 @@ public class Model {
 	}
 	
 	public List<Suggestions> getFilteredSuggestions(String chooseFood,String choosePrice){
-		
 		IFilter bf= new BasicFilter();
 		IFilter sf= new FoodFilter(bf,chooseFood);
 		IFilter sp= new PriceFilter(sf,choosePrice);
-		this.list= sp.getSuggestions(sf.getSuggestions(bf.getSuggestions(this.list)));
-		
-		return this.list;
+		this.listSuggestions= sp.getSuggestions(sf.getSuggestions(bf.getSuggestions(this.listSuggestions)));
+		return this.listSuggestions;
 	}
 }

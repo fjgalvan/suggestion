@@ -8,7 +8,7 @@ import java.util.Map;
 import provider.Suggestions;
 import util.DateS;
 
-public class ParsearTweetInSuggestion {
+public class ParsearTweetToSuggestion {
 	String twitterString;
 	int posicion=0;
 	int posicion2=0;
@@ -19,7 +19,7 @@ public class ParsearTweetInSuggestion {
 	private DateS date;
 	
 	
-	public ParsearTweetInSuggestion(String twitterString){
+	public ParsearTweetToSuggestion(String twitterString){
 		this.twitterString= twitterString;
 		this.listaProductosPrecios = new HashMap<String,Double>();
 	}

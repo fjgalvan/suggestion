@@ -4,6 +4,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Comunes {
+	private static final String regularExpressionUserTwitter= "^@[A-Za-z0-9_]{1,15}$";
+	
 	public static boolean isNumeric(String cadena){
 		try {
 			if(Integer.parseInt(cadena) >= 1){
@@ -18,7 +20,7 @@ public class Comunes {
 	}
 	
 	public static boolean isUserTwitter(String cadena){
-		Pattern p= Pattern.compile("^@[A-Za-z0-9_]{1,15}$");
+		Pattern p= Pattern.compile(regularExpressionUserTwitter);
 		Matcher m= p.matcher(cadena);
 		if(m.find()){
 			return true;

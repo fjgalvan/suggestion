@@ -11,7 +11,7 @@ public class TwitterValidatorDateS {
 	
 	public boolean VigenciaPromoValida(){
 		boolean vigencia= false;
-		ParsearTweetInSuggestion c= new ParsearTweetInSuggestion(this.ts);
+		ParsearTweetToSuggestion c= new ParsearTweetToSuggestion(this.ts);
 		c.convertirFecha();
 		c.getDate();
 		

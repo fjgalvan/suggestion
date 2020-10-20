@@ -7,7 +7,8 @@ import java.io.IOException;
 import connection.IConnector;
 
 public class ExcelConnector implements IConnector{
-	String path;
+	private static final String errorMsg= "Se Produjo un Error de Conexion con Excel!!!  ";
+	private String path;
 	
 	public ExcelConnector(String path){
 		this.path= path;
@@ -20,7 +21,7 @@ public class ExcelConnector implements IConnector{
 			FileInputStream file = new FileInputStream(new File(this.path));
 			return true;
 		}catch (IOException e) {
-			System.out.println("Se Produjo un Error de Conexion con Excel!!!  "+e.getMessage());
+			System.out.println(errorMsg + e.getMessage());
 			return false;
 		}
 		

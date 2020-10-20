@@ -2,12 +2,13 @@ package configuration;
 
 import java.util.List; 
 import java.util.Observer;
+
 import provider.IFactory;
 import ui.IConfiguration;
 import ui.IPanel;
 
 public class ExcelFactory implements IFactory{
-
+	private static final String providerName= "excel.ExcelProvider";
 	@Override
 	public IPanel getPanel(List<Observer> l) {
 		ExcelPanel ePanel= new ExcelPanel();
@@ -22,7 +23,7 @@ public class ExcelFactory implements IFactory{
 
 	@Override
 	public String getProviderName() {
-		return "excel.ExcelProvider";
+		return providerName;
 	}
 
 }

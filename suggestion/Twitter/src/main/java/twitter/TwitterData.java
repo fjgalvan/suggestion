@@ -2,7 +2,9 @@ package twitter;
 
 import java.util.ArrayList; 
 import java.util.List;
+
 import javax.swing.JOptionPane;
+
 import provider.Suggestions;
 import twitter4j.Paging;
 import twitter4j.ResponseList;
@@ -10,6 +12,7 @@ import twitter4j.Status;
 import twitter4j.TwitterException;
 
 public class TwitterData {
+	private static final String errorChooseUserMsg= "Elija un usuario twitter válido";
 	private List<String> listaTweets;
 	private Integer lastTweets;
 	private TwitterConnector tc;
@@ -31,7 +34,7 @@ public class TwitterData {
 			rl = recuperarListadoDeUltimosTweetsEscritos();
 		} catch (TwitterException e) {
 			e.printStackTrace();
-			JOptionPane.showMessageDialog(null, "Elija un usuario twitter válido");
+			JOptionPane.showMessageDialog(null, errorChooseUserMsg);
 		}
 		for (int i = 0; i < rl.size(); i++) {
 			listaTweets.add(rl.get(i).getText());
@@ -56,7 +59,7 @@ public class TwitterData {
 		TwitterValidatorDateS vf = new TwitterValidatorDateS(s);
 
 		if ((vt.twitterStringValido()) && (vf.VigenciaPromoValida())) {
-			ParsearTweetInSuggestion cs = new ParsearTweetInSuggestion(s);
+			ParsearTweetToSuggestion cs = new ParsearTweetToSuggestion(s);
 			cs.convertirLocal();
 			cs.convertirUbicacion();
 			cs.convertirLista();

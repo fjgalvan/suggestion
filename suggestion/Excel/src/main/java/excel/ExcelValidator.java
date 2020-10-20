@@ -20,6 +20,15 @@ import util.DateS;
 
 
 public class ExcelValidator {
+	public static final String promoLocal ="local";
+	public static final String promoUbicacion ="Ubicacion";
+	public static final String promoProducto ="Producto";
+	public static final String promoPrecio ="Precio";
+	public static final String promoFechaDeVigencia ="fechaDeVigencia";
+	public static final String promolComidas ="lComidas";
+	private static final String formatDate= "dd/MM/yyyy";
+	private static final String errorMsg= "Se Produjo un Error!!!  ";
+	private static final String regularExpressionNumeric=  "[+-]?\\d*(\\.\\d+)?";
 	private Integer aux = 0;
 	private Integer contCellCollValido = 0;
 	private String local = "";
@@ -73,7 +82,7 @@ public class ExcelValidator {
 						} catch (Exception e) {
 							if (DateUtil.isCellDateFormatted(cell)) {
 								SimpleDateFormat formateador = new SimpleDateFormat(
-										"dd/MM/yyyy");
+										formatDate);
 								this.fechaV = formateador.format(cell
 										.getDateCellValue());
 								contCellValidosParaSerUnaSugerencia(
@@ -111,27 +120,27 @@ public class ExcelValidator {
 
 		if ((cont == 0)
 				&& (cell.getStringCellValue()
-						.equals(MyConstantsConexiones.promoLocal))) {
+						.equals(promoLocal))) {
 			aux = aux + 1;
 		}
 		if ((cont == 1)
 				&& (cell.getStringCellValue()
-						.equals(MyConstantsConexiones.promoUbicacion))) {
+						.equals(promoUbicacion))) {
 			aux = aux + 1;
 		}
 		if ((cont == 2)
 				&& (cell.getStringCellValue()
-						.equals(MyConstantsConexiones.promoProducto))) {
+						.equals(promoProducto))) {
 			aux = aux + 1;
 		}
 		if ((cont == 3)
 				&& (cell.getStringCellValue()
-						.equals(MyConstantsConexiones.promoPrecio))) {
+						.equals(promoPrecio))) {
 			aux = aux + 1;
 		}
 		if ((cont == 4)
 				&& (cell.getStringCellValue()
-						.equals(MyConstantsConexiones.promoFechaDeVigencia))) {
+						.equals(promoFechaDeVigencia))) {
 			aux = aux + 1;
 		}
 
@@ -139,14 +148,14 @@ public class ExcelValidator {
 	}
 
 	public Date parsearStringADate(String fecha) throws ParseException {
-		SimpleDateFormat formateador = new SimpleDateFormat("dd/MM/yyyy");
+		SimpleDateFormat formateador = new SimpleDateFormat(formatDate);
 		Date d = formateador.parse(fecha);
 		return d;
 	}
 
 	public boolean isFechaVigente(String strFecha) {// if cont==4
 		Date fechaActual = new Date();
-		SimpleDateFormat formateador = new SimpleDateFormat("dd/MM/yyyy");
+		SimpleDateFormat formateador = new SimpleDateFormat(formatDate);
 		String fechaSistema = formateador.format(fechaActual);
 
 		boolean resultado = false;
@@ -165,13 +174,13 @@ public class ExcelValidator {
 				}
 			}
 		} catch (ParseException e) {
-			System.out.println("Se Produjo un Error!!!  " + e.getMessage());
+			System.out.println(errorMsg + e.getMessage());
 		}
 		return resultado;
 	}
 
 	public boolean isNumeric(String str) {// if cont==3
-		return (str.matches("[+-]?\\d*(\\.\\d+)?") && str.equals("") == false);
+		return (str.matches(regularExpressionNumeric) && str.equals("") == false);
 	}
 
 	public Integer contCellValidosParaSerUnaSugerencia(Integer contColumna, 

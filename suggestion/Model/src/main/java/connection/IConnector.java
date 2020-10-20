@@ -1,7 +1,6 @@
 package connection;
 
 public interface IConnector {
-	//public String name="";
 	
 	public boolean connect();
 	

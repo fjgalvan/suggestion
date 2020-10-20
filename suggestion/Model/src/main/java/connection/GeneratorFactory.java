@@ -15,7 +15,7 @@ public class GeneratorFactory {
 	public List<IFactory> loadFactories(List<String> classesToLoad){
 		MyClassLoader mecanismos = new MyClassLoader();
 		//Se castea automáticamente a IConector en la asignación!!
-		listFactories =mecanismos.load(ConnectorSearcher.rutaFile, classesToLoad);
+		listFactories =mecanismos.load(ConnectorSearcher.pathFile, classesToLoad);
 		return listFactories;
 	}
 	

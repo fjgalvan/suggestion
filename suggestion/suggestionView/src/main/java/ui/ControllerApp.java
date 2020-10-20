@@ -17,6 +17,7 @@ import model.Model;
 
 
 public class ControllerApp implements ActionListener, Observer {
+	private static final String errorProvider= "Elija un proveedor válido";
 	private Model m;
 	private ViewApp v;
 	private List<IFactory> factory;
@@ -42,13 +43,13 @@ public class ControllerApp implements ActionListener, Observer {
 		try{factoryChose= this.factory.stream().filter(i->i.getProviderName().equals(provider)).findFirst().get();
 			config= factoryChose.getConfiguration();}
 		catch(Exception e) {
-			 JOptionPane.showMessageDialog(null, "Elija un proveedor válido");
+			 JOptionPane.showMessageDialog(null, errorProvider);
 		}
 	}
 	public void setPanel(){
 		try{v.nuevoPanel(factoryChose.getPanel(Arrays.asList(this)).createPanel());}
 		catch(Exception e) {
-			 JOptionPane.showMessageDialog(null, "Elija un proveedor válido");
+			 JOptionPane.showMessageDialog(null, errorProvider);
 		}
 	}
 	public void getSuggestion(){
