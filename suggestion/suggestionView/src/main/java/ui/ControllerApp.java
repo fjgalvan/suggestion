@@ -7,6 +7,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
+import java.util.stream.Collectors;
 
 import javax.swing.JOptionPane;
 
@@ -35,8 +36,10 @@ public class ControllerApp implements ActionListener, Observer {
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 	}
-	public void init( List<IFactory> factory){
-		this.factory= factory;
+	public void init( List<String> listFactoriesName){
+		List<IFactory> factories= this.m.initFactories(listFactoriesName);
+		this.v.loadProviders(factories.stream().map(i->i.getProviderName()).collect(Collectors.toList()));
+		this.factory= factories;
 	}
 	public void setFactoryChoose(){
 		String provider= v.getComboBoxProveedor().getSelectedItem().toString();
