@@ -24,10 +24,10 @@ public class PriceFilter extends SuggestionDecorator {
 		return addPriceFilter(chosenPrice, super.getSuggestions(lista));
 	}
 	
-	private List<Suggestions> addPriceFilter(String chosenFood, List<Suggestions> lista){
+	private List<Suggestions> addPriceFilter(String chosenPrice, List<Suggestions> lista){
 		List<Suggestions> listaAux=new ArrayList<Suggestions>();;
 		for(Suggestions item : lista) {
-			if(isValue(chosenFood, item.getPrecio())){
+			if(isValue(chosenPrice, item.getPrecio())){
 				listaAux.add(item);
 			}
 		}

@@ -2,14 +2,13 @@ package configuration;
 
 import provider.IProvider;
 import configuration.ExcelPanel; 
+import configuration.IConfiguration;
+import configuration.IPanel;
 import excel.ExcelProvider;
-import ui.IConfiguration;
-import ui.IPanel;
 
 public class ExcelConfiguration implements IConfiguration{
-	ExcelPanel ePanel;
-	ExcelProvider eProvider;
-	String path;
+	private ExcelPanel ePanel;
+	private String path;
 
 	@Override
 	public IProvider configureProvider(IPanel panel) {

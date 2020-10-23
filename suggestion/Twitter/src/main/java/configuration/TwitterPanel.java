@@ -9,9 +9,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
+import configuration.IBoundsPanelConfiguration;
+import configuration.IPanel;
 import twitter.Comunes;
-import ui.IBoundsPanelConfiguration;
-import ui.IPanel;
 
 public class TwitterPanel extends Observable implements IPanel,IBoundsPanelConfiguration {
 	private static final String userNameLabel= "USUARIO TWITTER : ";
@@ -20,10 +20,10 @@ public class TwitterPanel extends Observable implements IPanel,IBoundsPanelConfi
 	private static final String errorChooseUserMsg= "Elija un usuario twitter válido";
 	private static final String errorChooseNumericMsg= "Elija un valor numérico válido, últimos tweets";
 	
-	JTextArea textArea_usuarioTwitter;
-	JTextArea textArea_ultimosTweets;
-	JButton btnGuardar;
-	JButton btnCancelar;
+	private JTextArea textArea_usuarioTwitter;
+	private JTextArea textArea_ultimosTweets;
+	private JButton btnGuardar;
+	private JButton btnCancelar;
 	@Override
 	public JPanel createPanel() {//JComponent
 		JPanel panel = new JPanel();

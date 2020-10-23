@@ -28,16 +28,16 @@ public class TwitterData {
 	}
 	
 	public List<String> getListTweets() { 
-		ResponseList<Status> rl = null;
 
 		try {
-			rl = recuperarListadoDeUltimosTweetsEscritos();
+			listaTweets.clear();
+			ResponseList<Status> rl = recuperarListadoDeUltimosTweetsEscritos();
+			for (int i = 0; i < rl.size(); i++) {
+				listaTweets.add(rl.get(i).getText());
+			}
 		} catch (TwitterException e) {
 			e.printStackTrace();
 			JOptionPane.showMessageDialog(null, errorChooseUserMsg);
-		}
-		for (int i = 0; i < rl.size(); i++) {
-			listaTweets.add(rl.get(i).getText());
 		}
 		return listaTweets;
 	}

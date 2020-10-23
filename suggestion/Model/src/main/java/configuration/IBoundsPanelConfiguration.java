@@ -1,4 +1,4 @@
-package ui;
+package configuration;
 
 public interface IBoundsPanelConfiguration {
 	public final static Integer xPanel= 10;

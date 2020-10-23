@@ -1,4 +1,4 @@
-package ui;
+package configuration;
 
 import provider.IProvider;
 

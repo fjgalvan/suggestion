@@ -7,20 +7,21 @@ import provider.Suggestions;
 
 public class TwitterProvider implements IProvider {
 	private ArrayList<Suggestions> listSuggestionsTwitter;
-	private TwitterConnector tc;
+	private TwitterConnector twitterConnector;
 	private List<String> listaTweets;
 	private TwitterData data;
 
 	public TwitterProvider(String userTwitter, Integer lastTweets) {
 		listSuggestionsTwitter = new ArrayList<Suggestions>();
 		listaTweets = new ArrayList<String>();
-		tc = new TwitterConnector();
-		data= new TwitterData(tc,listaTweets,userTwitter,lastTweets);
+		twitterConnector = new TwitterConnector();
+		data= new TwitterData(twitterConnector,listaTweets,userTwitter,lastTweets);
 	}
 
 	@Override
 	public List<Suggestions> getSuggestions() {
-		if (tc.connect()) {
+		listSuggestionsTwitter.clear();
+		if (twitterConnector.connect()) {
 			getValidListSuggestion(data.getListTweets());
 		}
 		return listSuggestionsTwitter;
@@ -28,8 +29,8 @@ public class TwitterProvider implements IProvider {
 
 	private void getValidListSuggestion(List<String> l) {
 		for (int i = 0; i < l.size(); i++) {
-			TwitterValidatorTweet v = new TwitterValidatorTweet(l.get(i));
-			if (v.twitterStringValido()) {
+			TwitterValidatorTweet tweet = new TwitterValidatorTweet(l.get(i));
+			if (tweet.twitterStringValido()) {
 				this.listSuggestionsTwitter= (ArrayList<Suggestions>) data.getSuggestionsParcial(l.get(i));
 			}
 		}

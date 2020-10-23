@@ -3,9 +3,9 @@ package configuration;
 import java.util.List; 
 import java.util.Observer;
 
+import configuration.IConfiguration;
+import configuration.IPanel;
 import provider.IFactory;
-import ui.IConfiguration;
-import ui.IPanel;
 
 public class ExcelFactory implements IFactory{
 	private static final String providerName= "excel.ExcelProvider";

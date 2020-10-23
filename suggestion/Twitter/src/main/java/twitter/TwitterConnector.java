@@ -7,12 +7,13 @@ import connection.IConnector;
 
 public class TwitterConnector implements IConnector {
 	private static final String errorMsg= "Se Produjo un Error de Conexion con Twitter!!!  ";
-	Twitter twitter;
-
+	public Twitter twitter;
+	private ConfigurationBuilder cb;
+	
 	@Override
 	public boolean connect() {
 
-		ConfigurationBuilder cb = new ConfigurationBuilder();
+		this.cb = new ConfigurationBuilder();
 
 		cb.setDebugEnabled(true)
 				.setOAuthConsumerKey(MyConstantsConnectionTwitter.ConsumerKey)
@@ -32,6 +33,7 @@ public class TwitterConnector implements IConnector {
 
 	@Override
 	public boolean disconnect() {
+		cb.setDebugEnabled(false);
 		return false;
 	}
 

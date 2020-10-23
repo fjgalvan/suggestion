@@ -13,8 +13,8 @@ import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-import ui.IBoundsPanelConfiguration;
-import ui.IPanel;
+import configuration.IBoundsPanelConfiguration;
+import configuration.IPanel;
 
 public class ExcelPanel extends Observable implements IPanel,IBoundsPanelConfiguration{
 	private static final String pathLabel= "RUTA EXCEL:";
@@ -25,10 +25,10 @@ public class ExcelPanel extends Observable implements IPanel,IBoundsPanelConfigu
 	private static final String extentionExcelFile= "xlsx";
 	private static final String errorPathMsg= "Elija una ruta válida!";
 	
-	JTextArea textArea_rutaExcel;
-	JButton btnGuardar;
-	JButton btnCancelar;
-	JButton btnAbrir;
+	private JTextArea textArea_rutaExcel;
+	private JButton btnGuardar;
+	private JButton btnCancelar;
+	private JButton btnAbrir;
 	@Override
 	public JPanel createPanel() {//JComponent
 		JPanel panel = new JPanel();

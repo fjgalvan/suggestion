@@ -14,7 +14,7 @@ public class MainApp {
 		listFactoriesName.add("configuration.ExcelFactory");
 		ControllerApp c = new ControllerApp(m, v);
 		c.init(listFactoriesName);
-		v.setVisible(true);
 	}
 
+	
 }
