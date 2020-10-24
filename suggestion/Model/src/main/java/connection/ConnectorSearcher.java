@@ -4,9 +4,10 @@ import java.io.File;
 
 public class ConnectorSearcher {
 	public static final String pathFile = "C:\\MecanismosDeConexionExterna";
-	private File path = new File(pathFile);
+	private File path;
 	
 	public ConnectorSearcher(){
+		path = new File(pathFile);
 	}
 
 	public File getPath() {

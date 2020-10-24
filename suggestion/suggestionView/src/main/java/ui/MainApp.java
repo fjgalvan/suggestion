@@ -5,7 +5,6 @@ import java.util.List;
 import model.Model;
 
 public class MainApp {
-
 	public static void main(String[] args) {
 		Model m = new Model();
 		ViewApp v = new ViewApp();
@@ -15,6 +14,4 @@ public class MainApp {
 		ControllerApp c = new ControllerApp(m, v);
 		c.init(listFactoriesName);
 	}
-
-	
 }
