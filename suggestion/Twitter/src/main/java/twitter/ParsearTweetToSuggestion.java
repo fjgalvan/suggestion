@@ -145,7 +145,7 @@ public class ParsearTweetToSuggestion {
 	}
 	
 	@SuppressWarnings("rawtypes")
-	public ArrayList<Suggestions> getListSugerenciaTwitter(ArrayList<Suggestions> l){
+	public ArrayList<Suggestions> getListSuggestionsTwitter(ArrayList<Suggestions> l){
 		Iterator iterador = listaProductosPrecios.entrySet().iterator();
 		 Map.Entry producto;
 		    while (iterador.hasNext()) {

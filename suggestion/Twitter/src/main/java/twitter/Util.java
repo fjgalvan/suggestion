@@ -3,7 +3,7 @@ package twitter;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Comunes {
+public class Util {
 	private static final String regularExpressionUserTwitter= "^@[A-Za-z0-9_]{1,15}$";
 	
 	public static boolean isNumeric(String cadena){

@@ -33,7 +33,6 @@ public class TwitterConnector implements IConnector {
 
 	@Override
 	public boolean disconnect() {
-		cb.setDebugEnabled(false);
 		return false;
 	}
 

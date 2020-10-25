@@ -7,15 +7,17 @@ import provider.IFactory;
 
 public class GeneratorFactory {
 	private List<IFactory> listFactories;
+	private String path;
 
-	public GeneratorFactory() {
+	public GeneratorFactory(String path) {
 		listFactories = new ArrayList<IFactory>();
+		this.path= path;
 	}
 	
 	public List<IFactory> loadFactories(List<String> classesToLoad){
 		MyClassLoader mecanismos = new MyClassLoader();
-		//Se castea automáticamente a IConector en la asignación!!
-		listFactories =mecanismos.load(ConnectorSearcher.pathFile, classesToLoad);
+		//Se castea automáticamente a IFactory en la asignación!!
+		listFactories =mecanismos.load(this.path, classesToLoad);
 		return listFactories;
 	}
 	

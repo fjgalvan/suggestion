@@ -27,10 +27,10 @@ public class MyClassLoader {
 		try {
 			URL[] urlsList = getUrls(filejars);
 			// carga todas las URL que toman de los .jar
-			URLClassLoader childClassLoader = new URLClassLoader(urlsList);
+			URLClassLoader ClassesLoader = new URLClassLoader(urlsList);
 			for (String className : classesToLoad) {
 				classes.add((GENERIC) Class.forName(className, true,
-						childClassLoader).newInstance());
+						ClassesLoader).newInstance());
 			}
 			return classes;
 		} catch (ClassNotFoundException | InstantiationException

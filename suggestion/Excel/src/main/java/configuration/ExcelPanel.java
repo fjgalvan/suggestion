@@ -1,6 +1,6 @@
 package configuration;
 
-import java.awt.Color;   
+import java.awt.Color;    
 import java.io.File;
 import java.util.Observable;
 
@@ -12,11 +12,9 @@ import javax.swing.JTextArea;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
-
-import configuration.IBoundsPanelConfiguration;
 import configuration.IPanel;
 
-public class ExcelPanel extends Observable implements IPanel,IBoundsPanelConfiguration{
+public class ExcelPanel extends Observable implements IPanel{
 	private static final String pathLabel= "RUTA EXCEL:";
 	private static final String saveButtonName= "GUARDAR";
 	private static final String cancelButtonName= "CANCELAR";
@@ -78,7 +76,7 @@ public class ExcelPanel extends Observable implements IPanel,IBoundsPanelConfigu
 	}
 	
 	public String getPath(){
-		if(excel.Comunes.isAbsolutePath(textArea_rutaExcel.getText().toString())){
+		if(excel.Util.isAbsolutePath(textArea_rutaExcel.getText().toString())){
 			return textArea_rutaExcel.getText().toString();
 		}
 		else{

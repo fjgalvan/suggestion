@@ -7,6 +7,10 @@ import java.util.List;
 
 import org.junit.Test;
 
+import filters.BasicFilter;
+import filters.FoodFilter;
+import filters.IFilter;
+import filters.PriceFilter;
 import provider.Suggestions;
 import util.DateS;
 

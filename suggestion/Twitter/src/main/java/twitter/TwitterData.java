@@ -64,7 +64,7 @@ public class TwitterData {
 			cs.convertirUbicacion();
 			cs.convertirLista();
 			cs.convertirFecha();
-			listSuggestionsTwitter = cs.getListSugerenciaTwitter(listSuggestionsTwitter);
+			listSuggestionsTwitter = cs.getListSuggestionsTwitter(listSuggestionsTwitter);
 
 		}
 		return listSuggestionsTwitter;

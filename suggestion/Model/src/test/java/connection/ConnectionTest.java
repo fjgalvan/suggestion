@@ -16,10 +16,8 @@ public class ConnectionTest {
 		List<String> listFactoriesName = new ArrayList<String>();
 		listFactoriesName.add("configuration.TwitterFactory");
 		listFactoriesName.add("configuration.ExcelFactory");
-		GeneratorFactory factories= new GeneratorFactory();
+		GeneratorFactory factories= new GeneratorFactory("C:\\MecanismosDeConexionExterna");
 		factories.loadFactories(listFactoriesName);
-		ConnectorSearcher searcher= new ConnectorSearcher();
-		searcher.setPath(searcher.getPath());
 		MyClassLoader load= new MyClassLoader();
 		String path="C:\\MecanismosDeConexionExterna";
 		load.load(path, listFactoriesName);

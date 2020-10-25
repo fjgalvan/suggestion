@@ -1,4 +1,4 @@
-package decorator;
+package filters;
 
 import java.util.List; 
 import provider.Suggestions;

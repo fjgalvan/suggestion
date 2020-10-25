@@ -2,10 +2,10 @@ package twitter;
 
 
 public class TwitterValidatorDateS {
-	FechaActual f;
+	DateUtil f;
 	String ts;
 	public TwitterValidatorDateS(String twitterString){
-		this.f= new FechaActual();
+		this.f= new DateUtil();
 		this.ts= twitterString;
 	}
 	

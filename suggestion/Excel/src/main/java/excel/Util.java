@@ -4,7 +4,7 @@ import java.nio.file.InvalidPathException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Comunes {
+public class Util {
 	private static final String regularExpression= "(?:[a-zA-Z]\\:)\\\\([\\w-]+\\\\)*\\w([\\w-.])+";
 	public static boolean isAbsolutePath(String cadena){
 		try{

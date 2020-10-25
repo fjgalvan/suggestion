@@ -16,20 +16,20 @@ import configuration.IPanel;
 import provider.IFactory;
 import provider.IProvider;
 import provider.Suggestions;
-import model.Model;
+import model.SuggestionsService;
 
 
 public class ControllerApp implements ActionListener, Observer {
 	private static final String errorProvider= "Elija un proveedor válido";
 	private static final String errorConfiguration= "Elija una configuración válida y elija los filtros!";
-	private Model model;
+	private SuggestionsService suggestionsService;
 	private ViewApp view;
 	private List<IFactory> factory;
 	private IFactory factoryChose;
 	private IConfiguration config;
 	
-	public ControllerApp(Model m, ViewApp v) {
-		this.model = m;
+	public ControllerApp(SuggestionsService m, ViewApp v) {
+		this.suggestionsService = m;
 		this.view = v;
 		
 		this.view.getBtnConfigurar().addActionListener(i->setPanel());
@@ -40,7 +40,7 @@ public class ControllerApp implements ActionListener, Observer {
 	public void actionPerformed(ActionEvent arg0) {
 	}
 	public void init( List<String> listFactoriesName){
-		List<IFactory> factories= this.model.initFactories(listFactoriesName);
+		List<IFactory> factories= this.suggestionsService.initFactories(listFactoriesName);
 		this.view.loadProviders(factories.stream().map(i->i.getProviderName()).collect(Collectors.toList()));
 		this.factory= factories;
 		this.view.setVisible(true);
@@ -64,7 +64,7 @@ public class ControllerApp implements ActionListener, Observer {
 			String chooseFood= view.getComboBox_comida().getSelectedItem().toString();
 			String choosePrice= view.getComboBox_precio().getSelectedItem().toString();
 			this.view.getTextArea_Sugerencias().setText("");
-			Iterator<Suggestions> nombreIterator = this.model.getFilteredSuggestions(chooseFood, choosePrice).iterator();
+			Iterator<Suggestions> nombreIterator = this.suggestionsService.getFilteredSuggestions(chooseFood, choosePrice).iterator();
 			
 			while (nombreIterator.hasNext()) {
 				Suggestions elemento = nombreIterator.next();
@@ -73,6 +73,7 @@ public class ControllerApp implements ActionListener, Observer {
 			}
 		}catch(Exception e){
 			JOptionPane.showMessageDialog(null, errorConfiguration);
+			//VER BIEN!!!
 		}
 		
 	}
@@ -80,6 +81,6 @@ public class ControllerApp implements ActionListener, Observer {
 	@Override
 	public void update(Observable o, Object arg) {
 		IProvider providerWithNewConfig= config.configureProvider((IPanel) arg);
-		this.model.setProvider(providerWithNewConfig);
+		this.suggestionsService.setProvider(providerWithNewConfig);
 	}
 }

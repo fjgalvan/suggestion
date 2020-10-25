@@ -1,4 +1,4 @@
-package decorator;
+package filters;
 
 import java.util.ArrayList;  
 import java.util.HashMap; 

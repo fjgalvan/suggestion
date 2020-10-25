@@ -1,19 +1,16 @@
 package configuration;
 
-import java.awt.Color; 
+import java.awt.Color;  
 import java.util.Observable;
-
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
-
-import configuration.IBoundsPanelConfiguration;
 import configuration.IPanel;
-import twitter.Comunes;
+import twitter.Util;
 
-public class TwitterPanel extends Observable implements IPanel,IBoundsPanelConfiguration {
+public class TwitterPanel extends Observable implements IPanel {
 	private static final String userNameLabel= "USUARIO TWITTER : ";
 	private static final String lastTweetsLabel= "ULTIMOS TWEETS : ";
 	private static final String saveButtonName= "GUARDAR";
@@ -68,7 +65,7 @@ public class TwitterPanel extends Observable implements IPanel,IBoundsPanelConfi
 	
 	public String getUserTwitter(){
 		
-		if(Comunes.isUserTwitter(textArea_usuarioTwitter.getText().toString())){
+		if(Util.isUserTwitter(textArea_usuarioTwitter.getText().toString())){
 			return textArea_usuarioTwitter.getText().toString();
 		}
 		else{
@@ -77,7 +74,7 @@ public class TwitterPanel extends Observable implements IPanel,IBoundsPanelConfi
 		}
 	}
 	public Integer getLastTweets(){
-		if(Comunes.isNumeric(textArea_ultimosTweets.getText())){
+		if(Util.isNumeric(textArea_ultimosTweets.getText())){
 			return Integer.parseInt((textArea_ultimosTweets.getText().toString()));
 		}
 		else{

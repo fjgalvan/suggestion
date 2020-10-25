@@ -4,11 +4,11 @@ import java.util.Calendar;
 import java.util.Date;
 
 
-public class FechaActual {
+public class DateUtil {
 	static Date date= new Date();
 	static Calendar c;
 	
-	public FechaActual(){
+	public DateUtil(){
 		c = Calendar.getInstance();
 	}
 	
