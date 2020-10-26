@@ -15,7 +15,9 @@ public class TwitterPanel extends Observable implements IPanel {
 	private static final String lastTweetsLabel= "ULTIMOS TWEETS : ";
 	private static final String saveButtonName= "GUARDAR";
 	private static final String errorChooseUserMsg= "Elija un usuario twitter válido";
+	private static final String okChooseUserMsg= "Usuario twitter válido";
 	private static final String errorChooseNumericMsg= "Elija un valor numérico válido, últimos tweets";
+	private static final String okChooseNumericMsg= "Valor numérico válido";
 	
 	private JTextArea textArea_usuarioTwitter;
 	private JTextArea textArea_ultimosTweets;
@@ -66,6 +68,7 @@ public class TwitterPanel extends Observable implements IPanel {
 	public String getUserTwitter(){
 		
 		if(Util.isUserTwitter(textArea_usuarioTwitter.getText().toString())){
+			JOptionPane.showMessageDialog(null, okChooseUserMsg);
 			return textArea_usuarioTwitter.getText().toString();
 		}
 		else{
@@ -75,6 +78,7 @@ public class TwitterPanel extends Observable implements IPanel {
 	}
 	public Integer getLastTweets(){
 		if(Util.isNumeric(textArea_ultimosTweets.getText())){
+			JOptionPane.showMessageDialog(null, okChooseNumericMsg);
 			return Integer.parseInt((textArea_ultimosTweets.getText().toString()));
 		}
 		else{

@@ -13,9 +13,9 @@ public class ProductsBo {
 	private static final String dessertFoodEnabled= "flan,gelatina,helado";
 	private static final String healthyFoodEnabled= "ensalada,pollo,sopa";
 	private static final String pastaFoodEnabled= "canelones,fideos,ravioles";
-	private static final String lowPrice= "bajo";
-	private static final String middlePrice= "medio";
-	private static final String bigPrice= "grande";
+	private static final String lowPrice= "barato";
+	private static final String middlePrice= "regular";
+	private static final String bigPrice= "caro";
 	private static final Double maxLowPrice= 200.0;
 	private static final Double maxMiddlePrice= 1000.0;
 	private static final Double maxBigPrice= 3000.0;

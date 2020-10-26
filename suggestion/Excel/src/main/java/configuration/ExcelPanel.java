@@ -22,16 +22,17 @@ public class ExcelPanel extends Observable implements IPanel{
 	private static final String helpExtention= "Archivos Excel (.xlsx)";
 	private static final String extentionExcelFile= "xlsx";
 	private static final String errorPathMsg= "Elija una ruta válida!";
+	private static final String okPathMsg= "configuración exitosa!";
 	
 	private JTextArea textArea_rutaExcel;
 	private JButton btnGuardar;
 	private JButton btnCancelar;
 	private JButton btnAbrir;
 	@Override
-	public JPanel createPanel() {//JComponent
+	public JPanel createPanel() {
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.GREEN);
-		panel.setBounds(xPanel,yPanel,widthPanel,heightPanel);//(10, 11, 443, 117);
+		panel.setBounds(xPanel,yPanel,widthPanel,heightPanel);
 		panel.setLayout(null);
 		
 		JLabel lblRutaExcel = new JLabel(pathLabel);
@@ -77,6 +78,7 @@ public class ExcelPanel extends Observable implements IPanel{
 	
 	public String getPath(){
 		if(excel.Util.isAbsolutePath(textArea_rutaExcel.getText().toString())){
+			JOptionPane.showMessageDialog(null, okPathMsg);
 			return textArea_rutaExcel.getText().toString();
 		}
 		else{

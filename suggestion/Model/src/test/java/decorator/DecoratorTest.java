@@ -29,7 +29,7 @@ public class DecoratorTest {
 		bf.getSuggestions(listSuggestions);
 		IFilter sf= new FoodFilter(bf,"chatarras");
 		sf.getSuggestions(listSuggestions);
-		IFilter sp= new PriceFilter(sf,"bajo");
+		IFilter sp= new PriceFilter(sf,"barato");
 		sp.getSuggestions(listSuggestions);
 	}
 }

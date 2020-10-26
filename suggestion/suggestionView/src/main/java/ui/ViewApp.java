@@ -22,17 +22,17 @@ public class ViewApp extends JFrame {
 	private static final String provider= "PROVEEDOR";
 	private static final String configuration= "CONFIGURACION: ";
 	private static final String suggestion= "SUGERENCIAS";
-	private static final String chooseProvider= "Elegir Proveedor!";
+	private static final String chooseMsgProvider= "Elegir Proveedor!";
 	private static final String chooseFood= "elija un tipo de comida!";
 	private static final String scrap= "chatarras";
 	private static final String desserts= "postres";
 	private static final String healthy= "sanas";
 	private static final String pasta= "pastas";
 	private static final String filters= "FILTROS: ";
-	private static final String choosePriceMax="elija un rango de precio máximo!";
-	private static final String low= "bajo";
-	private static final String medium= "medio";
-	private static final String big= "grande";
+	private static final String chooseMsgPriceMax="elija un rango de precio máximo!";
+	private static final String low= "barato";
+	private static final String medium= "regular";
+	private static final String big= "caro";
 	
 	private JPanel contentPane;
 	private JPanel panel;
@@ -90,7 +90,7 @@ public class ViewApp extends JFrame {
 		
 		comboBoxProveedor = new JComboBox<String>();
 		comboBoxProveedor.setBounds(125, 13, 259, 31);
-		comboBoxProveedor.addItem(chooseProvider);
+		comboBoxProveedor.addItem(chooseMsgProvider);
 		contentPane.add(comboBoxProveedor);
 		
 		comboBox_comida = new JComboBox<String>();
@@ -108,7 +108,7 @@ public class ViewApp extends JFrame {
 		
 		comboBox_precio = new JComboBox<String>();
 		comboBox_precio.setBounds(386, 226, 216, 20);
-		comboBox_precio.addItem(choosePriceMax);
+		comboBox_precio.addItem(chooseMsgPriceMax);
 		comboBox_precio.addItem(low);
 		comboBox_precio.addItem(medium);
 		comboBox_precio.addItem(big);

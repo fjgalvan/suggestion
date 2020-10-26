@@ -21,7 +21,9 @@ import model.SuggestionsService;
 
 public class ControllerApp implements ActionListener, Observer {
 	private static final String errorProvider= "Elija un proveedor válido";
-	private static final String errorConfiguration= "Elija una configuración válida y elija los filtros!";
+	private static final String errorConfiguration= "Elija una configuración válida!";
+	private static final String defaultMsgChooseFood= "elija un tipo de comida!";
+	private static final String defaultMsgchoosePriceMax="elija un rango de precio máximo!";
 	private SuggestionsService suggestionsService;
 	private ViewApp view;
 	private List<IFactory> factory;
@@ -62,7 +64,13 @@ public class ControllerApp implements ActionListener, Observer {
 	public void getSuggestion(){
 		try{
 			String chooseFood= view.getComboBox_comida().getSelectedItem().toString();
+			if(chooseFood.equals(defaultMsgChooseFood)){
+				chooseFood=null;
+			}
 			String choosePrice= view.getComboBox_precio().getSelectedItem().toString();
+			if(choosePrice.equals(defaultMsgchoosePriceMax)){
+				choosePrice=null;
+			}
 			this.view.getTextArea_Sugerencias().setText("");
 			Iterator<Suggestions> nombreIterator = this.suggestionsService.getFilteredSuggestions(chooseFood, choosePrice).iterator();
 			
@@ -73,7 +81,6 @@ public class ControllerApp implements ActionListener, Observer {
 			}
 		}catch(Exception e){
 			JOptionPane.showMessageDialog(null, errorConfiguration);
-			//VER BIEN!!!
 		}
 		
 	}

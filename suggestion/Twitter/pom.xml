@@ -8,10 +8,7 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 
-	<groupId>pp2</groupId>
 	<artifactId>Twitter</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-
 	<name>Twitter</name>
 	<!-- FIXME change it to the project's website -->
 	<url>http://www.example.com</url>
