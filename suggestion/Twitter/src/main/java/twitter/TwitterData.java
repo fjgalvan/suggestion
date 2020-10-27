@@ -36,7 +36,7 @@ public class TwitterData {
 				listaTweets.add(rl.get(i).getText());
 			}
 		} catch (TwitterException e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 			JOptionPane.showMessageDialog(null, errorChooseUserMsg);
 		}
 		return listaTweets;
